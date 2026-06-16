@@ -80,22 +80,16 @@ export default function Header({ onMenuClick }) {
                   </button>
                 </Link>
 
-                <Link
-                  to={"/auth/login"}
+                <button
                   onClick={() => {
                     logOutUser();
                     setOpenDropdown(false);
-                  }}  >
-
-
-                  <button
-
-                    className="flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-[#d40c1a] hover:bg-[#e8ecea] transition cursor-pointer"
-                  >
-                    <Icon icon="material-symbols:logout" width="20" />
-                    <span className="font-montserrat text-sm font-medium">Log Out</span>
-                  </button>
-                </Link>
+                  }}
+                  className="flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-[#d40c1a] hover:bg-[#e8ecea] transition cursor-pointer"
+                >
+                  <Icon icon="material-symbols:logout" width="20" />
+                  <span className="font-montserrat text-sm font-medium">Log Out</span>
+                </button>
               </div>
             )}
           </div>

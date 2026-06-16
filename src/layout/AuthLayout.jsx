@@ -1,10 +1,25 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import Cookies from "js-cookie";
 import Password from "../components/Password";
 import InputField from "../components/Inputfield";
 import Image from "../components/Image";
 import { Icon } from "@iconify/react";
 
 export default function AuthLayout() {
+  const { user, loading } = useAuth();
+  const role = Cookies.get("role");
+
+  if (loading) {
+    return <div className="min-h-screen flex items-center justify-center text-[#9fa5ac]">Loading...</div>;
+  }
+
+  if (user) {
+    if (role === "admin") return <Navigate to="/admin/dashboard" replace />;
+    if (role === "owner") return <Navigate to="/owner/dashboard" replace />;
+    return <Navigate to="/" replace />;
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#f6f3eb] p-4">
       <div className="w-[580px] bg-[#ffffff] border border-[#e6e4df] rounded-[32px] px-20 py-12 flex flex-col items-center border border-[#e6e4df]/40 shadow-2xl font-montserrat">

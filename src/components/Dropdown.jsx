@@ -13,7 +13,8 @@ const Dropdown = ({
   optionClass,
   labelClass,
   icon,
-  value
+  value,
+  placement = "bottom"
 }) => {
   const [selected, setSelected] = useState(value || "");
 
@@ -73,10 +74,10 @@ const Dropdown = ({
 
         {/* Dropdown Menu */}
         <div
-          className={`absolute left-0 top-[105%] w-full bg-[#ffffff]  border border-[#D1D5DC] rounded-md shadow-md  text-[#000000] z-30 transition-all duration-300 text-center overflow-y-scroll hide-scrollbar  ${optionClass} ${
+          className={`absolute left-0 ${placement === 'top' ? 'bottom-[105%]' : 'top-[105%]'} w-full bg-[#ffffff] border border-[#e6e4df] rounded-md shadow-xl text-[#000000] z-50 transition-all duration-300 text-center overflow-y-auto hide-scrollbar ${optionClass} ${
             show
-              ? "opacity-100 visible max-h-60 "
-              : "opacity-0 invisible max-h-0 "
+              ? "opacity-100 visible max-h-60"
+              : "opacity-0 invisible max-h-0"
           }`}
         >
           {options.map((item, index) => (

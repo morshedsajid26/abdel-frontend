@@ -2,18 +2,27 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Table from '../../components/Table';
+import { useGetTenant } from '../../hooks/useTenants';
 
-import { tenantsMockData, billingHistoryMock } from '../../data/mockData';
+import { billingHistoryMock } from '../../data/mockData';
 
 const ViewTenant = () => {
   const { id } = useParams();
-  const tenant = tenantsMockData.find(t => t.id === parseInt(id));
+  const { data: tenant, isLoading, isError } = useGetTenant(id);
   const billingData = billingHistoryMock[id] || [];
 
-  if (!tenant) {
+  if (isLoading) {
+    return (
+      <div className="p-6 flex items-center justify-center min-h-[400px]">
+        <Icon icon="lucide:loader-2" className="animate-spin text-[#205943] text-4xl" />
+      </div>
+    );
+  }
+
+  if (isError || !tenant) {
     return (
       <div className="p-6 text-[#0e1217] text-center">
-        <h2 className="text-2xl font-bold">Tenant not found</h2>
+        <h2 className="text-2xl font-bold">Tenant not found or error loading data</h2>
       </div>
     );
   }
@@ -81,9 +90,9 @@ const ViewTenant = () => {
         </div>
 
         <div>
-          <span className={`inline-block px-4 py-1.5 text-xs font-semibold rounded-full ${
-            tenant.status === "Active" ? "bg-[#4285F4] text-white" : 
-            tenant.status === "Suspended" ? "bg-[#EA4335] text-white" : 
+          <span className={`inline-block px-4 py-1.5 text-xs font-semibold rounded-full capitalize ${
+            tenant.status?.toLowerCase() === "active" ? "bg-[#4285F4] text-white" : 
+            tenant.status?.toLowerCase() === "suspended" ? "bg-[#EA4335] text-white" : 
             "bg-[#7A8293] text-white"
           }`}>
             {tenant.status}

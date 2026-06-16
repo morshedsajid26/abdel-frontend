@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
 import { Icon } from "@iconify/react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import InputField from "../../components/Inputfield";
 import Password from "../../components/Password";
 import toast from "react-hot-toast";
-import useAuth from "../../hooks/useAuth";
-import Cookies from "js-cookie";
+import { useLoginMutation } from "../../hooks/useLoginMutation";
 
 export default function LogIn() {
-  const navigate = useNavigate();
-  const { setUser } = useAuth();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const [isPending, setIsPending] = useState(false);
+  const mutation = useLoginMutation();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -23,17 +19,7 @@ export default function LogIn() {
       return;
     }
     
-    setIsPending(true);
-    setTimeout(() => {
-      setIsPending(false);
-      const user = { role: 'OWNER', name: 'Mock User' };
-      Cookies.set('Access-Token', 'mock-token', { expires: 7 });
-      Cookies.set('role', 'owner', { expires: 7 });
-      localStorage.setItem('user', JSON.stringify(user));
-      setUser(user);
-      toast.success('Login successful!');
-      navigate('/owner/dashboard');
-    }, 1000);
+    mutation.mutate({ email, password });
   };
 
   return (
@@ -86,10 +72,10 @@ export default function LogIn() {
 
         <button 
           type="submit"
-          disabled={isPending}
+          disabled={mutation.isPending}
           className="w-full mt-4 bg-linear-to-t from-[#173623] via-[#0a170f] to-[#11291b] text-white text-sm font-medium py-3.5 rounded-full border border-[#e6e4df] shadow-[0_0_20px_rgba(59,107,79,0.25)] hover:shadow-[0_0_25px_rgba(59,107,79,0.4)] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {isPending ? (
+          {mutation.isPending ? (
             <>
               <Icon icon="lucide:loader-2" className="animate-spin" width="18" />
               Signing in...
