@@ -117,7 +117,7 @@ const TestCallWindow = () => {
         <Breadcrumb text={"Check the voice tester"} />
       </div>
 
-      <div className="flex-1 bg-[#0E0E10] rounded-3xl border border-[#262626] relative flex flex-col items-center justify-center overflow-hidden min-h-[600px] ">
+      <div className="flex-1 bg-[#ffffff] rounded-3xl border border-[#e6e4df] relative flex flex-col items-center justify-center overflow-hidden min-h-[600px] ">
         {/* Voice Orb Area */}
         <div className="relative mb-12 md:mb-20 scale-75 md:scale-100">
           <motion.div
@@ -150,7 +150,7 @@ const TestCallWindow = () => {
             />
            
 
-            <span className="text-white text-lg md:text-xl font-bold relative z-20 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+            <span className="text-[#0e1217] text-lg md:text-xl font-bold relative z-20 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
               {isCalling ? (isMuted ? "Muted" : "Analyzing...") : "Ready"}
             </span>
           </motion.div>
@@ -167,7 +167,7 @@ const TestCallWindow = () => {
             className="overflow-visible"
           >
             <Waveform
-              color="#2563EB"
+              color="#3b6b4f"
               isCalling={isCalling}
               volume={volume}
               multiplier={1.25}
@@ -205,7 +205,7 @@ const TestCallWindow = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 onClick={startCall}
-                className="group flex items-center gap-3 bg-green-500 hover:bg-green-600 text-black px-8 md:px-10 py-3 md:py-4 rounded-full font-bold text-base md:text-lg transition-all shadow-[0_0_30px_rgba(34,197,94,0.4)] hover:scale-105 active:scale-95"
+                className="group flex items-center gap-3 bg-[#e8ecea]0 hover:bg-green-600 text-black px-8 md:px-10 py-3 md:py-4 rounded-full font-bold text-base md:text-lg transition-all shadow-[0_0_30px_rgba(34,197,94,0.4)] hover:scale-105 active:scale-95"
               >
                 <PhoneCall className="w-5 h-5 md:w-6 md:h-6 group-hover:animate-pulse" />
                 Start Test Call
@@ -216,12 +216,12 @@ const TestCallWindow = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
-                className="relative flex items-center gap-3 md:gap-4 bg-[#111114] border border-blue-500/30 px-5 md:px-6 py-3 md:py-4 rounded-full shadow-[0_0_40px_rgba(37,99,235,0.2)]"
+                className="relative flex items-center gap-3 md:gap-4 bg-[#ffffff] border border-blue-500/30 px-5 md:px-6 py-3 md:py-4 rounded-full shadow-[0_0_40px_rgba(37,99,235,0.2)]"
               >
                 {/* Relocated Timer */}
                 <div className="absolute -top-12 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full backdrop-blur-md">
                   <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse" />
-                  <span className="text-blue-400 font-mono text-sm tracking-widest">
+                  <span className="text-green-400 font-mono text-sm tracking-widest">
                     {formatTime(callDuration)}
                   </span>
                 </div>
@@ -230,7 +230,7 @@ const TestCallWindow = () => {
                   className={`p-4 rounded-full transition-all ${
                     isMuted
                       ? "bg-red-500/20 text-red-500"
-                      : "bg-blue-500/10 text-blue-400 hover:bg-blue-500/20"
+                      : "bg-blue-500/10 text-green-400 hover:bg-blue-500/20"
                   }`}
                 >
                   {isMuted ? (
@@ -242,7 +242,7 @@ const TestCallWindow = () => {
                 <div className="w-[1px] h-8 bg-blue-500/20 mx-2" />
                 <button
                   onClick={endCall}
-                  className="p-4 rounded-full bg-red-500 text-white hover:bg-red-600 transition-all shadow-lg shadow-red-500/40 hover:scale-110 active:scale-90"
+                  className="p-4 rounded-full bg-red-500 text-[#0e1217] hover:bg-red-600 transition-all shadow-lg shadow-red-500/40 hover:scale-110 active:scale-90"
                 >
                   <Phone className="w-7 h-7 rotate-[135deg]" />
                 </button>

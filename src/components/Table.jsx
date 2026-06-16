@@ -67,11 +67,11 @@ export default function Table({ TableHeads, TableRows, headClass, tableClass }) 
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
-                    className={`text-left border-b border-gray-800/50 bg-[#0E0E10] font-semibold text-white py-4 px-4 ${headClass} select-none`}
+                    className={`text-left border-b border-[#e6e4df]/50 bg-[#ffffff] font-semibold text-[#0e1217] py-4 px-4 ${headClass} select-none`}
                     style={{ width: header.column.columnDef.size }}
                   >
                     <div 
-                      className="flex items-center gap-2 cursor-pointer hover:text-gray-300 transition-colors"
+                      className="flex items-center gap-2 cursor-pointer hover:text-[#9fa5ac] transition-colors"
                       onClick={header.column.getToggleSortingHandler()}
                     >
                       {header.isPlaceholder
@@ -82,10 +82,10 @@ export default function Table({ TableHeads, TableRows, headClass, tableClass }) 
                           )}
                       
                       {header.column.getCanSort() && (
-                        <span className="text-gray-500">
+                        <span className="text-[#9fa5ac]">
                           {{
-                            asc: <ArrowUp size={14} className="text-gray-300" />,
-                            desc: <ArrowDown size={14} className="text-gray-300" />,
+                            asc: <ArrowUp size={14} className="text-[#9fa5ac]" />,
+                            desc: <ArrowDown size={14} className="text-[#9fa5ac]" />,
                           }[header.column.getIsSorted()] ?? <ArrowUpDown size={14} />}
                         </span>
                       )}
@@ -99,11 +99,11 @@ export default function Table({ TableHeads, TableRows, headClass, tableClass }) 
           {/* ==== TABLE BODY ==== */}
           <tbody>
             {table.getRowModel().rows.map((row) => (
-              <tr key={row.id} className="hover:bg-gray-800/30 transition-all border-b border-gray-800/50 last:border-0 group">
+              <tr key={row.id} className="hover:bg-[#edebe5]/30 transition-all border-b border-[#e6e4df] last:border-0 group">
                 {row.getVisibleCells().map((cell) => (
                   <td
                     key={cell.id}
-                    className="py-5 text-left px-4 text-[15px] font-normal text-white transition-colors"
+                    className="py-5 text-left px-4 text-[15px] font-normal text-[#0e1217] transition-colors"
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
@@ -115,15 +115,15 @@ export default function Table({ TableHeads, TableRows, headClass, tableClass }) 
       </div>
 
       {/* ==== PAGINATION CONTROLS ==== */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-5 bg-transparent border-t border-gray-800/50">
-        <div className="text-sm text-gray-400 text-center sm:text-left">
-          Page <span className="font-semibold text-white">{table.getState().pagination.pageIndex + 1}</span> of{" "}
-          <span className="font-semibold text-white">{table.getPageCount()}</span>
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-5 bg-transparent border-t border-[#e6e4df]">
+        <div className="text-sm text-[#9fa5ac] text-center sm:text-left">
+          Page <span className="font-semibold text-[#0e1217]">{table.getState().pagination.pageIndex + 1}</span> of{" "}
+          <span className="font-semibold text-[#0e1217]">{table.getPageCount()}</span>
         </div>
         
         <div className="flex items-center gap-2 sm:gap-3">
             <button
-                className="p-2 sm:p-2.5 rounded-lg border border-gray-700 bg-[#151515] text-gray-400 hover:bg-gray-800 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                className="p-2 sm:p-2.5 rounded-lg border border-[#e6e4df] bg-[#ffffff] text-[#9fa5ac] hover:bg-[#edebe5] hover:text-[#0e1217] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                 onClick={() => table.previousPage()}
                 disabled={!table.getCanPreviousPage()}
             >
@@ -137,7 +137,7 @@ export default function Table({ TableHeads, TableRows, headClass, tableClass }) 
                         className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg border text-sm font-medium transition-all ${
                             table.getState().pagination.pageIndex === pageIdx
                                 ? "bg-blue-600/20 text-blue-500 border-blue-500/50"
-                                : "bg-[#151515] text-gray-400 border-gray-700 hover:border-gray-500 hover:text-white"
+                                : "bg-[#ffffff] text-gray-400 border-gray-700 hover:border-gray-500 hover:text-white"
                         }`}
                         onClick={() => table.setPageIndex(pageIdx)}
                     >
@@ -147,7 +147,7 @@ export default function Table({ TableHeads, TableRows, headClass, tableClass }) 
             </div>
 
             <button
-                className="p-2 sm:p-2.5 rounded-lg border border-gray-700 bg-[#151515] text-gray-400 hover:bg-gray-800 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                className="p-2 sm:p-2.5 rounded-lg border border-[#e6e4df] bg-[#ffffff] text-[#9fa5ac] hover:bg-[#edebe5] hover:text-[#0e1217] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                 onClick={() => table.nextPage()}
                 disabled={!table.getCanNextPage()}
             >

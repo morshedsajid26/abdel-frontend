@@ -75,7 +75,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="sticky top-0 left-0 right-0 z-[100] bg-[#070B14] py-4 border-b border-white/10">
+    <div className="sticky top-0 left-0 right-0 z-[100] bg-[#ffffff] py-4 border-b border-[#e6e4df]">
       <Container>
         <motion.div
           initial={{ y: -20, opacity: 0 }}
@@ -96,7 +96,7 @@ const Navbar = () => {
           </Link>
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-3xl cursor-pointer p-2 rounded-xl hover:bg-slate-100 transition-colors bg-white"
+            className="md:hidden text-3xl cursor-pointer p-2 rounded-xl hover:bg-slate-100 transition-colors bg-[#ffffff]"
             onClick={() => setOpen(!open)}
           >
             {open ? <FiX /> : <FiMenu />}
@@ -124,8 +124,8 @@ const Navbar = () => {
                     onClick={() => scrollToSection(item.href)}
                     className={`py-2 px-4 font-inter text-lg font-medium transition-colors rounded-lg cursor-pointer ${
                       activeSection === item.href
-                        ? "text-[#0F42FF] "
-                        : "text-white hover:text-[#0F42FF]"
+                        ? "text-[#419977] "
+                        : "text-white hover:text-[#419977]"
                     }`}
                   >
                     {item.name}
@@ -142,13 +142,13 @@ const Navbar = () => {
           >
             {user ? (
               <Link to={dashboardPath}>
-                <button className="bg-linear-to-t from-[#00135B] via-[#02060F] to-[#00104E] rounded-full text-white font-bold text-base px-6 py-3 border border-[#0F42FF] cursor-pointer">
+                <button className="bg-linear-to-t from-[#173623] via-[#0a170f] to-[#11291b] rounded-full text-white font-bold text-base px-6 py-3 border border-[#419977] cursor-pointer">
                   {dashboardLabel}
                 </button>
               </Link>
             ) : (
               <Link to="/auth/login">
-                <button className="bg-linear-to-t from-[#00135B] via-[#02060F] to-[#00104E] rounded-full text-white font-bold text-base px-6 py-3 border border-[#0F42FF] cursor-pointer">
+                <button className="bg-linear-to-t from-[#173623] via-[#0a170f] to-[#11291b] rounded-full text-white font-bold text-base px-6 py-3 border border-[#419977] cursor-pointer">
                   Start Free Trial
                 </button>
               </Link>
@@ -166,7 +166,7 @@ const Navbar = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-[#070B14] mt-4 rounded-2xl shadow-xl overflow-hidden"
+              className="md:hidden bg-[#ffffff] mt-4 rounded-2xl shadow-xl overflow-hidden"
             >
               <ul className="flex flex-col items-start gap-2 p-6">
                 {navitems.map((item, index) => (
@@ -183,8 +183,8 @@ const Navbar = () => {
                         onClick={() => setOpen(false)}
                         className={`py-3 px-4 font-inter text-lg font-medium block rounded-xl transition-all ${
                           location.pathname === item.href
-                            ? "text-[#0F42FF] bg-[#070B14]"
-                            : "text-white hover:bg-[#070B14] hover:text-[#0F42FF]"
+                            ? "text-[#419977] bg-[#edebe5]"
+                            : "text-white hover:bg-[#edebe5] hover:text-[#419977]"
                         }`}
                       >
                         {item.name}
@@ -194,8 +194,8 @@ const Navbar = () => {
                         onClick={() => scrollToSection(item.href, true)}
                         className={`py-3 px-4 font-inter text-lg font-medium block rounded-xl transition-all w-full text-left ${
                           activeSection === item.href
-                            ? "text-[#0F42FF] bg-[#0F42FF]/10"
-                            : "text-white hover:bg-[#0F42FF]/10 hover:text-[#0F42FF]"
+                            ? "text-[#419977] bg-[#419977]/10"
+                            : "text-white hover:bg-[#419977]/10 hover:text-[#419977]"
                         }`}
                       >
                         {item.name}
@@ -212,13 +212,13 @@ const Navbar = () => {
                 >
                   {user ? (
                     <Link to={dashboardPath} onClick={() => setOpen(false)}>
-                      <button className="bg-linear-to-t from-[#00135B] via-[#02060F] to-[#00104E] rounded-full text-white font-bold text-base px-6 py-3 border border-[#0F42FF] w-full cursor-pointer">
+                      <button className="bg-linear-to-t from-[#173623] via-[#0a170f] to-[#11291b] rounded-full text-white font-bold text-base px-6 py-3 border border-[#419977] w-full cursor-pointer">
                         {dashboardLabel}
                       </button>
                     </Link>
                   ) : (
                     <Link to="/auth/login" onClick={() => setOpen(false)}>
-                      <button className="bg-linear-to-t from-[#00135B] via-[#02060F] to-[#00104E] rounded-full text-white font-bold text-base px-6 py-3 border border-[#0F42FF] w-full cursor-pointer">
+                      <button className="bg-linear-to-t from-[#173623] via-[#0a170f] to-[#11291b] rounded-full text-white font-bold text-base px-6 py-3 border border-[#419977] w-full cursor-pointer">
                         Start Free Trial
                       </button>
                     </Link>

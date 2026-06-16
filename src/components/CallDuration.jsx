@@ -14,9 +14,9 @@ import {
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-[#18181A] border border-gray-800 p-3 rounded-lg shadow-xl">
-        <p className="text-gray-400 text-xs mb-1">{label}</p>
-        <p className="text-white font-semibold text-sm">
+      <div className="bg-[#ffffff] shadow-sm border border-[#e6e4df] border border-[#e6e4df] p-3 rounded-lg shadow-xl">
+        <p className="text-[#9fa5ac] text-xs mb-1">{label}</p>
+        <p className="text-[#0e1217] font-semibold text-sm">
           {payload[0].value} Min
         </p>
       </div>
@@ -52,14 +52,14 @@ const CallDuration = ({ data: apiData }) => {
     : defaultData;
 
   return (
-    <div className="w-full bg-[#191919] rounded-2xl px-6 py-10 border border-gray-800/50">
+    <div className="w-full bg-[#ffffff] rounded-2xl px-6 py-10 border border-[#e6e4df]">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-4">
-          <h2 className="text-2xl font-medium text-white">Total Call Duration</h2>
+          <h2 className="text-2xl font-medium text-[#0e1217]">Total Call Duration</h2>
           <div className="flex items-center gap-2">
-            <span className="text-gray-400 text-sm">8.06%</span>
-            <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center shadow-sm">
+            <span className="text-[#9fa5ac] text-sm">8.06%</span>
+            <div className="w-6 h-6 rounded-full bg-[#ffffff] flex items-center justify-center shadow-sm">
               <Icon icon="lucide:trending-up" className="text-black text-xs" />
             </div>
           </div>
@@ -70,8 +70,8 @@ const CallDuration = ({ data: apiData }) => {
             options={["Last 7 days", "Last 15 days", "Last 30 days"]}
             value={timeRange}
             onSelect={(val) => setTimeRange(val)}
-            inputClass="!bg-transparent !border-gray-700 !text-gray-300 !py-2 !pl-4 !pr-10 !rounded-full !text-sm  !transition-colors !text-center"
-            optionClass="!bg-[#1C1C1E] !hover:bg-[#15248380] !border-gray-800 !text-gray-300"
+            inputClass="!bg-transparent !border-[#e6e4df] !text-[#9fa5ac] !py-2 !pl-4 !pr-10 !rounded-full !text-sm  !transition-colors !text-center"
+            optionClass="!bg-[#ffffff] !hover:bg-[#15248380] !border-[#e6e4df] !text-[#9fa5ac]"
             icon="!text-gray-400 !right-2"
           />
         </div>
@@ -86,15 +86,16 @@ const CallDuration = ({ data: apiData }) => {
           >
             <defs>
               <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#2563EB" stopOpacity={0.3} />
-                <stop offset="95%" stopColor="#2563EB" stopOpacity={0} />
+                <stop offset="5%" stopColor="#3b6b4f" stopOpacity={0.3} />
+                <stop offset="95%" stopColor="#3b6b4f" stopOpacity={0} />
               </linearGradient>
             </defs>
             
             <CartesianGrid 
               horizontal={false} 
-              vertical={true} 
-              stroke="#262626" 
+              vertical={false} 
+              stroke="#e5e7eb" 
+            
             />
             
             <XAxis 
@@ -118,7 +119,7 @@ const CallDuration = ({ data: apiData }) => {
             <Area
               type="linear"
               dataKey="value"
-              stroke="#2563EB"
+              stroke="#3b6b4f"
               strokeWidth={3}
               fillOpacity={1}
               fill="url(#colorValue)"

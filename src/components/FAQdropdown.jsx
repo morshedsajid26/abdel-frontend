@@ -13,19 +13,19 @@ const FAQdropdown = ({ question, answer, className = "" }) => {
     >
       <div 
         className={`w-full rounded-2xl border transition-all duration-300 overflow-hidden bg-gradient-to-br from-[#1A1A27]  to-[#0F0F18] ${
-          isOpen ? "border-[#0F42FF] " : "border-white/10 "
+          isOpen ? "border-[#419977] " : "border-white/10 "
         } ${className}`}
       >
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="w-full px-6 py-6 flex items-center justify-between gap-4 text-left cursor-pointer outline-none"
         >
-          <h4 className="text-white text-base md:text-lg font-inter font-semibold">
+          <h4 className="text-[#0e1217] text-base md:text-lg font-inter font-semibold">
             {question}
           </h4>
            
           <div className={`shrink-0 w-8 h-8 rounded-xl flex items-center justify-center transition-colors duration-300 text-white ${
-            isOpen ? "bg-linear-to-t from-[#00135B] via-[#02060F] to-[#00104E] " : "bg-[#00135B]/50 "
+            isOpen ? "bg-linear-to-t from-[#173623] via-[#0a170f] to-[#11291b] " : "bg-[#205943] "
           }`}>
             {isOpen ? <FiMinus className="w-5 h-5" /> : <FiPlus className="w-5 h-5" />}
           </div>

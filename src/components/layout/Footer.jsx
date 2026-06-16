@@ -43,16 +43,16 @@ const Footer = () => {
             </p>
 
             {/* <div className="flex items-center gap-4">
-              <a href="#" className="w-10 h-10 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center text-[#888888] hover:text-white hover:bg-white/10 transition-all">
+              <a href="#" className="w-10 h-10 rounded-xl bg-[#ffffff]/10 border border-[#e6e4df] flex items-center justify-center text-[#888888] hover:text-[#0e1217] hover:bg-[#ffffff]/10 transition-all">
                 <FiTwitter className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center text-[#888888] hover:text-white hover:bg-white/10 transition-all">
+              <a href="#" className="w-10 h-10 rounded-xl bg-[#ffffff]/10 border border-[#e6e4df] flex items-center justify-center text-[#888888] hover:text-[#0e1217] hover:bg-[#ffffff]/10 transition-all">
                 <FiLinkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center text-[#888888] hover:text-white hover:bg-white/10 transition-all">
+              <a href="#" className="w-10 h-10 rounded-xl bg-[#ffffff]/10 border border-[#e6e4df] flex items-center justify-center text-[#888888] hover:text-[#0e1217] hover:bg-[#ffffff]/10 transition-all">
                 <FiGithub className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center text-[#888888] hover:text-white hover:bg-white/10 transition-all">
+              <a href="#" className="w-10 h-10 rounded-xl bg-[#ffffff]/10 border border-[#e6e4df] flex items-center justify-center text-[#888888] hover:text-[#0e1217] hover:bg-[#ffffff]/10 transition-all">
                 <FiMail className="w-5 h-5" />
               </a>
             </div> */}
@@ -60,24 +60,24 @@ const Footer = () => {
 
           {/* Links */}
           <div className="flex flex-col gap-4 ">
-            <h4 className="text-white font-inter font-semibold mb-2">Product</h4>
+            <h4 className="text-[#0e1217] font-inter font-semibold mb-2">Product</h4>
             <Link href="#feature" className="text-sm font-inter text-[#CDCDCD] hover:text-[#AD46FF] transition-colors">Features</Link>
             <Link href="#pricing" className="text-sm font-inter text-[#CDCDCD] hover:text-[#AD46FF] transition-colors">Pricing</Link>
           </div>
 
           <div className="flex flex-col gap-4">
-            <h4 className="text-white font-inter font-semibold mb-2">Company</h4>
+            <h4 className="text-[#0e1217] font-inter font-semibold mb-2">Company</h4>
             <Link href="/about" className="text-sm font-inter text-[#CDCDCD] hover:text-[#AD46FF] transition-colors">About</Link>
             <Link href="#faq" className="text-sm font-inter text-[#CDCDCD] hover:text-[#AD46FF] transition-colors">FAQ</Link>
           </div>
 
           {/* <div className="flex flex-col gap-4">
-            <h4 className="text-white font-inter font-semibold mb-2">Resources</h4>
+            <h4 className="text-[#0e1217] font-inter font-semibold mb-2">Resources</h4>
             <Link href="#" className="text-sm font-inter text-[#CDCDCD] hover:text-[#AD46FF] transition-colors">Help Center</Link>
           </div> */}
 
           <div className="flex flex-col gap-4">
-            <h4 className="text-white font-inter font-semibold mb-2">Legal</h4>
+            <h4 className="text-[#0e1217] font-inter font-semibold mb-2">Legal</h4>
             <Link href="/privacy" className="text-sm font-inter text-[#CDCDCD] hover:text-[#AD46FF] transition-colors">Privacy Policy</Link>
             <Link href="/termscondition" className="text-sm font-inter text-[#CDCDCD] hover:text-[#AD46FF] transition-colors">Terms of Service</Link>
           </div>
@@ -88,10 +88,10 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: false }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="py-8 border-t border-white/10"
+          className="py-8 border-t border-[#e6e4df]"
         > 
           <p className="text-sm font-inter text-[#99A1AF]">
-            © {new Date().getFullYear()} Calai. All rights reserved.
+            © {new Date().getFullYear()} foodvoice. All rights reserved.
           </p>
         </motion.div>
       </Container>

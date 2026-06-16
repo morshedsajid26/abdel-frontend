@@ -73,7 +73,7 @@ const Dropdown = ({
 
         {/* Dropdown Menu */}
         <div
-          className={`absolute left-0 top-[105%] w-full bg-white  border border-[#D1D5DC] rounded-md shadow-md  text-[#000000] z-30 transition-all duration-300 text-center overflow-y-scroll hide-scrollbar  ${optionClass} ${
+          className={`absolute left-0 top-[105%] w-full bg-[#ffffff]  border border-[#D1D5DC] rounded-md shadow-md  text-[#000000] z-30 transition-all duration-300 text-center overflow-y-scroll hide-scrollbar  ${optionClass} ${
             show
               ? "opacity-100 visible max-h-60 "
               : "opacity-0 invisible max-h-0 "
@@ -83,7 +83,7 @@ const Dropdown = ({
             <div
               key={index}
               onClick={() => handleSelect(item)}
-              className={`py-2 cursor-pointer hover:bg-[#152483] hover:text-white `}
+              className={`py-2 cursor-pointer hover:bg-[#ffffff] hover:text-[#0e1217] `}
             >
               {item}
             </div>

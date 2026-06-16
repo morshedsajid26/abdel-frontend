@@ -55,11 +55,11 @@ const ItemManagement = () => {
     <div >
       <Breadcrumb text="You can see your item management" />
       
-      <div className="bg-[#191919] border border-[#1A1A1A] rounded-2xl overflow-hidden shadow-sm">
+      <div className="bg-[#ffffff] border border-[#e6e4df] rounded-2xl overflow-hidden shadow-sm">
         <Table
           TableHeads={columns}
           TableRows={items}
-          headClass=" border-b border-[#1A1A1A] text-gray-200 whitespace-nowrap last:[&>div]:justify-center"
+          headClass=" border-b border-[#e6e4df] text-[#0e1217] whitespace-nowrap last:[&>div]:justify-center"
           tableClass="border-none"
         />
 
@@ -68,29 +68,29 @@ const ItemManagement = () => {
       {/* Delete Confirmation Modal */}
       {isDeleteModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <div className="bg-[#0E0E10] border border-gray-800 rounded-[20px] w-full max-w-[500px] p-8 relative shadow-2xl">
+          <div className="bg-[#ffffff] border border-[#e6e4df] rounded-[20px] w-full max-w-[500px] p-8 relative shadow-2xl">
             <button 
               onClick={() => setIsDeleteModalOpen(false)}
-              className="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors"
+              className="absolute top-6 right-6 text-[#9fa5ac] hover:text-[#0e1217] transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <h2 className="text-white text-xl font-bold mb-3 text-center">Are you absolutely sure?</h2>
-            <p className="text-gray-400 text-[14px] leading-relaxed mb-10 text-center px-4">
-              This action cannot be undone. This will permanently delete the item <span className="text-white font-semibold">{deletingItem?.name}</span> and remove it from your inventory.
+            <h2 className="text-[#0e1217] text-xl font-bold mb-3 text-center">Are you absolutely sure?</h2>
+            <p className="text-[#9fa5ac] text-[14px] leading-relaxed mb-10 text-center px-4">
+              This action cannot be undone. This will permanently delete the item <span className="text-[#0e1217] font-semibold">{deletingItem?.name}</span> and remove it from your inventory.
             </p>
 
             <div className="flex items-center justify-center gap-5">
               <button 
                 onClick={() => setIsDeleteModalOpen(false)}
-                className="bg-white text-black font-semibold px-10 py-2.5 rounded-full hover:bg-gray-200 transition-colors text-sm"
+                className="bg-[#ffffff] text-black font-semibold px-10 py-2.5 rounded-full hover:bg-[#e6e4df] transition-colors text-sm"
               >
                 Cancel
               </button>
               <button 
                 onClick={handleConfirmDelete}
-                className="bg-[#ef4444] text-white px-10 py-2.5 rounded-full font-semibold hover:bg-red-600 transition-colors text-sm"
+                className="bg-[#ef4444] text-[#0e1217] px-10 py-2.5 rounded-full font-semibold hover:bg-red-600 transition-colors text-sm"
               >
                 Delete
               </button>

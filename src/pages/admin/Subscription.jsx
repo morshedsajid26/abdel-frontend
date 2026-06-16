@@ -4,19 +4,19 @@ import Table from '../../components/Table'
 import ToggleButton from '../../components/ToogleButton'
 
 const PlanCard = ({ plan, isAnnual }) => (
-  <div className={`bg-[#131313] border ${plan.isPopular ? 'border-blue-600/30 shadow-[0_0_20px_rgba(37,99,235,0.05)]' : 'border-[#272727]'} p-6 rounded-[28px] flex flex-col gap-6 hover:border-[#333333] transition-all group`}>
+  <div className={`bg-[#ffffff] border ${plan.isPopular ? 'border-blue-600/30 shadow-[0_0_20px_rgba(37,99,235,0.05)]' : 'border-[#e6e4df]'} p-6 rounded-[28px] flex flex-col gap-6 hover:border-[#e6e4df] transition-all group`}>
     <div className="flex flex-col gap-5">
-      <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-[13px] font-medium w-fit transition-colors ${plan.isPopular ? 'bg-blue-600/10 text-blue-400 border border-blue-600/40' : 'bg-[#1A1A1A] text-gray-300 border border-[#272727]'}`}>
+      <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-[13px] font-medium w-fit transition-colors ${plan.isPopular ? 'bg-blue-600/10 text-green-400 border border-blue-600/40' : 'bg-[#f6f3eb] text-[#9fa5ac] border border-[#e6e4df]'}`}>
         {plan.name}
-        <Sparkles className={`w-3.5 h-3.5 ${plan.isPopular ? 'text-blue-400' : 'text-gray-400'}`} />
+        <Sparkles className={`w-3.5 h-3.5 ${plan.isPopular ? 'text-green-400' : 'text-[#9fa5ac]'}`} />
       </div>
       
       <div className="flex items-baseline gap-1.5">
-        <span className="text-white text-[32px] font-bold tracking-tight">{plan.price}</span>
-        <span className="text-gray-500 text-sm font-medium">/{isAnnual ? 'year' : 'month'}</span>
+        <span className="text-[#0e1217] text-[32px] font-bold tracking-tight">{plan.price}</span>
+        <span className="text-[#9fa5ac] text-sm font-medium">/{isAnnual ? 'year' : 'month'}</span>
       </div>
       
-      <p className="text-gray-400 text-[13px] leading-relaxed min-h-[40px]">
+      <p className="text-[#9fa5ac] text-[13px] leading-relaxed min-h-[40px]">
         {plan.description}
       </p>
     </div>
@@ -27,9 +27,9 @@ const PlanCard = ({ plan, isAnnual }) => (
           {feature.included ? (
             <Check className="w-4 h-4 text-blue-500/80" />
           ) : (
-            <X className="w-4 h-4 text-gray-600" />
+            <X className="w-4 h-4 text-[#50565c]" />
           )}
-          <span className={`text-[13px] ${feature.included ? 'text-gray-300' : 'text-gray-600'}`}>
+          <span className={`text-[13px] ${feature.included ? 'text-[#9fa5ac]' : 'text-[#50565c]'}`}>
             {feature.text}
           </span>
         </div>
@@ -53,8 +53,8 @@ const Subscription = () => {
       value: "$8,540",
       label: (
         <div className="flex items-center gap-3">
-          <span className="text-white text-[11px] font-medium">+5.09% ↗</span>
-          <span className="text-gray-500 text-[11px]">+1.4 last month</span>
+          <span className="text-[#0e1217] text-[11px] font-medium">+5.09% ↗</span>
+          <span className="text-[#9fa5ac] text-[11px]">+1.4 last month</span>
         </div>
       ),
       icon: <TrendingUp className="w-6 h-6" />,
@@ -137,7 +137,7 @@ const Subscription = () => {
       key: 'status', 
       Title: 'Status',
       render: (row) => (
-        <span className="px-4 py-1.5 rounded-lg bg-blue-600 text-white text-[13px] font-medium">
+        <span className="px-4 py-1.5 rounded-lg bg-blue-600 text-[#0e1217] text-[13px] font-medium">
           {row.status}
         </span>
       )
@@ -147,7 +147,7 @@ const Subscription = () => {
       key: 'action', 
       Title: 'Action',
       render: () => (
-        <button className="text-gray-400 hover:text-white transition-colors">
+        <button className="text-[#9fa5ac] hover:text-[#0e1217] transition-colors">
           <Download className="w-5 h-5" />
         </button>
       )
@@ -192,9 +192,9 @@ const Subscription = () => {
         {stats.map((stat, index) => (
           <div 
             key={index} 
-            className='bg-[#191919] border border-[#272727] p-7 rounded-[32px] flex flex-col gap-6'
+            className='bg-[#ffffff] border border-[#e6e4df] p-7 rounded-[32px] flex flex-col gap-6'
           >
-            <div className="flex items-center gap-3 text-white">
+            <div className="flex items-center gap-3 text-[#0e1217]">
                <div className="opacity-80">
                 {stat.icon}
                </div>
@@ -202,10 +202,10 @@ const Subscription = () => {
             </div>
             
             <div className="flex flex-col gap-2">
-              <span className="text-white text-[28px] font-semibold leading-none">{stat.value}</span>
+              <span className="text-[#0e1217] text-[28px] font-semibold leading-none">{stat.value}</span>
               <div className="mt-2">
                 {typeof stat.label === 'string' ? (
-                  <span className={`text-[11px] font-medium ${stat.labelColor || 'text-gray-500'}`}>{stat.label}</span>
+                  <span className={`text-[11px] font-medium ${stat.labelColor || 'text-[#9fa5ac]'}`}>{stat.label}</span>
                 ) : stat.label}
               </div>
             </div>
@@ -232,7 +232,7 @@ const Subscription = () => {
 
 
       {/* Billing History */}
-       <div className="bg-[#191919] rounded-2xl border border-gray-800/50 overflow-hidden mt-15">
+       <div className="bg-[#ffffff] rounded-2xl border border-[#e6e4df] overflow-hidden mt-15">
         
         
           <Table 

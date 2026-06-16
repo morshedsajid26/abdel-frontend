@@ -3,10 +3,10 @@ import React from 'react'
 const PrivacySetting = () => {
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <h2 className="text-xl font-semibold text-white mb-1">Privacy Setting</h2>
-      <p className="text-sm text-gray-400 mb-8">Privacy about the system</p>
+      <h2 className="text-xl font-semibold text-[#0e1217] mb-1">Privacy Setting</h2>
+      <p className="text-sm text-[#9fa5ac] mb-8">Privacy about the system</p>
 
-      <div className="text-gray-300 text-sm md:text-[15px] leading-relaxed space-y-4">
+      <div className="text-[#9fa5ac] text-sm md:text-[15px] leading-relaxed space-y-4">
         <p>
           We value your privacy and are committed to protecting your personal information. By using our dashboard, you agree to the collection and use of information as outlined below:
         </p>
@@ -47,7 +47,7 @@ const PrivacySetting = () => {
           </ul>
         </div>
 
-        <p>5. A data handling notice clarifying that Calai does not store data and that transcripts are emailed only.</p>
+        <p>5. A data handling notice clarifying that foodvoice does not store data and that transcripts are emailed only.</p>
 
         <div className="space-y-1">
           <p>6.A field to input or update the destination email for transcripts.</p>
@@ -60,7 +60,7 @@ const PrivacySetting = () => {
 
         <div className="space-y-1">
           <p>9. Contact Us</p>
-          <p>If you have any questions about this Privacy Policy or how your information is handled, please contact our support team at [support@calai.com].</p>
+          <p>If you have any questions about this Privacy Policy or how your information is handled, please contact our support team at [support@foodvoice.com].</p>
         </div>
       </div>
     </div>

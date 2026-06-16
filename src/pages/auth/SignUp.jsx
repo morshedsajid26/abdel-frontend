@@ -41,8 +41,8 @@ const SignUp = () => {
   return (
     <div className="flex flex-col items-center w-full">
 
-      <h1 className="text-[32px] text-white font-semibold mb-2">Create Your Account</h1>
-      <p className="text-gray-400 text-[13px] mb-8 text-center">Boost your business — sign up to automate support with AI.</p>
+      <h1 className="text-[32px] text-[#0e1217] font-semibold mb-2">Create Your Account</h1>
+      <p className="text-[#9fa5ac] text-[13px] mb-8 text-center">Boost your business — sign up to automate support with AI.</p>
 
 
       <form onSubmit={handleSignup} className="w-full flex flex-col gap-5">
@@ -54,8 +54,8 @@ const SignUp = () => {
             placeholder="Enter First Name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            labelClass="!text-[13px] !text-gray-300 !font-medium !ml-1"
-            inputClass="!bg-[#111424] !text-white !placeholder-gray-600 !rounded-full !py-3.5 !border-transparent focus:!border-[#2563EB]/50 !transition-colors !text-sm"
+            labelClass="!text-[13px] !text-[#0e1217] !font-medium !ml-1"
+            inputClass="!bg-[#ffffff] !text-[#0e1217] !placeholder-[#9fa5ac] !rounded-full !py-3.5 !border-[#e6e4df] focus:!border-[#205943] !transition-colors !text-sm"
           />
 
           <InputField
@@ -64,8 +64,8 @@ const SignUp = () => {
             placeholder="Enter Last Name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            labelClass="!text-[13px] !text-gray-300 !font-medium !ml-1"
-            inputClass="!bg-[#111424] !text-white !placeholder-gray-600 !rounded-full !py-3.5 !border-transparent focus:!border-[#2563EB]/50 !transition-colors !text-sm"
+            labelClass="!text-[13px] !text-[#0e1217] !font-medium !ml-1"
+            inputClass="!bg-[#ffffff] !text-[#0e1217] !placeholder-[#9fa5ac] !rounded-full !py-3.5 !border-[#e6e4df] focus:!border-[#205943] !transition-colors !text-sm"
           />
         </div>
 
@@ -76,8 +76,8 @@ const SignUp = () => {
           placeholder="Enter Organization Name"
           value={businessName}
           onChange={(e) => setBusinessName(e.target.value)}
-          labelClass="!text-[13px] !text-gray-300 !font-medium !ml-1"
-          inputClass="!bg-[#111424] !text-white !placeholder-gray-600 !rounded-full !py-3.5 !border-transparent focus:!border-[#2563EB]/50 !transition-colors !text-sm"
+          labelClass="!text-[13px] !text-[#0e1217] !font-medium !ml-1"
+          inputClass="!bg-[#ffffff] !text-[#0e1217] !placeholder-[#9fa5ac] !rounded-full !py-3.5 !border-[#e6e4df] focus:!border-[#205943] !transition-colors !text-sm"
         />
 
         {/* Email Input */}
@@ -87,9 +87,9 @@ const SignUp = () => {
           placeholder="Enter Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          labelClass="!text-[13px] !text-gray-300 !font-medium !ml-1"
+          labelClass="!text-[13px] !text-[#0e1217] !font-medium !ml-1"
           leftIcon={<Icon icon="lucide:mail" width="18" />}
-          inputClass="!bg-[#111424] !text-white !placeholder-gray-600 !rounded-full !py-3.5 !border-transparent focus:!border-[#2563EB]/50 !transition-colors !text-sm"
+          inputClass="!bg-[#ffffff] !text-[#0e1217] !placeholder-[#9fa5ac] !rounded-full !py-3.5 !border-[#e6e4df] focus:!border-[#205943] !transition-colors !text-sm"
         />
 
         {/* Password Input */}
@@ -98,9 +98,9 @@ const SignUp = () => {
           placeholder="Enter Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          labelClass="!text-[13px] !text-gray-300 !font-medium !ml-1"
+          labelClass="!text-[13px] !text-[#0e1217] !font-medium !ml-1"
           leftIcon={<Icon icon="lucide:lock" width="18" />}
-          inputClass="!bg-[#111424] !text-white !placeholder-gray-600 !rounded-full !py-3.5 !border-transparent focus:!border-[#2563EB]/50 !transition-colors !text-sm"
+          inputClass="!bg-[#ffffff] !text-[#0e1217] !placeholder-[#9fa5ac] !rounded-full !py-3.5 !border-[#e6e4df] focus:!border-[#205943] !transition-colors !text-sm"
         />
 
         <Password
@@ -108,9 +108,9 @@ const SignUp = () => {
           placeholder="Enter Confirm Password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          labelClass="!text-[13px] !text-gray-300 !font-medium !ml-1"
+          labelClass="!text-[13px] !text-[#0e1217] !font-medium !ml-1"
           leftIcon={<Icon icon="lucide:lock" width="18" />}
-          inputClass="!bg-[#111424] !text-white !placeholder-gray-600 !rounded-full !py-3.5 !border-transparent focus:!border-[#2563EB]/50 !transition-colors !text-sm"
+          inputClass="!bg-[#ffffff] !text-[#0e1217] !placeholder-[#9fa5ac] !rounded-full !py-3.5 !border-[#e6e4df] focus:!border-[#205943] !transition-colors !text-sm"
         />
 
         {/* Remember & Forgot Password */}
@@ -120,9 +120,9 @@ const SignUp = () => {
               type="checkbox" 
               checked={agree}
               onChange={(e) => setAgree(e.target.checked)}
-              className="w-3.5 h-3.5 accent-[#2563EB] bg-[#111424] border-gray-700 rounded cursor-pointer" 
+              className="w-3.5 h-3.5 accent-[#3b6b4f] bg-[#ffffff] border border-[#e6e4df] border-[#e6e4df] rounded cursor-pointer" 
             />
-            <span className="text-[12px] text-gray-400">I agreeing to the terms of service and privacy policy</span>
+            <span className="text-[12px] text-[#9fa5ac]">I agreeing to the terms of service and privacy policy</span>
           </label>
           
         </div>
@@ -130,7 +130,7 @@ const SignUp = () => {
         <button 
           type="submit"
           disabled={isPending}
-          className="w-full mt-2 bg-linear-to-t from-[#00135B] via-[#02060F] to-[#00104E] text-white text-sm font-medium py-3.5 rounded-full border border-[#1D4ED8] shadow-[0_0_20px_rgba(29,78,216,0.25)] hover:shadow-[0_0_25px_rgba(29,78,216,0.4)] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full mt-2 bg-linear-to-t from-[#173623] via-[#0a170f] to-[#11291b] text-white text-sm font-medium py-3.5 rounded-full border border-[#e6e4df] shadow-[0_0_20px_rgba(59,107,79,0.25)] hover:shadow-[0_0_25px_rgba(59,107,79,0.4)] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isPending ? (
             <>
@@ -143,8 +143,8 @@ const SignUp = () => {
         </button>
 
       </form>
-      <div className="mt-4 text-[12px] text-gray-400">
-        Already have an account? <Link to="/auth/login" className="text-[#2563EB] hover:text-blue-400">Log In</Link>
+      <div className="mt-4 text-[12px] text-[#9fa5ac]">
+        Already have an account? <Link to="/auth/login" className="text-[#205943] hover:text-green-400">Log In</Link>
       </div>
 
 

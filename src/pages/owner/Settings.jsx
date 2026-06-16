@@ -17,7 +17,7 @@ const Settings = () => {
 
   return (
     <div className="flex flex-col h-full min-h-[80vh]">
-      <div className="w-full border-b border-[#262626] mb-8 bg-[#141416]">
+      <div className="w-full border-b border-[#e6e4df] mb-8 bg-[#fbfaf6]">
         <div className="flex flex-wrap gap-x-4 gap-y-2 md:gap-x-8 px-2 md:px-0 pt-2">
           {tabs.map((tab) => (
             <NavLink
@@ -25,8 +25,8 @@ const Settings = () => {
               to={tab.path}
               className={`whitespace-nowrap flex items-center pb-3 text-[13px] md:text-sm font-medium transition-all border-b-2 ${
                 isActivePath(tab.path)
-                  ? "border-[#0F42FF] text-white"
-                  : "border-transparent text-gray-400 hover:text-gray-200"
+                  ? "border-[#419977] text-[#205943]"
+                  : "border-transparent text-[#9fa5ac] hover:text-[#50565c]"
               }`}
             >
               {tab.name}

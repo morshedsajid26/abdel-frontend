@@ -74,11 +74,11 @@ const OTP = () => {
 
   return (
     <div className="flex flex-col items-center w-full">
-      <h1 className="text-[32px] text-white font-semibold mb-2">
+      <h1 className="text-[32px] text-[#0e1217] font-semibold mb-2">
         Enter OTP Code
       </h1>
-      <p className="text-gray-400 text-[13px] mb-8 text-center">
-        Your verification code is on its way to <span className="text-[#2563EB] font-medium">{email || 'your email'}</span>! Check your inbox and enter the code below to reset your password.
+      <p className="text-[#9fa5ac] text-[13px] mb-8 text-center">
+        Your verification code is on its way to <span className="text-[#205943] font-medium">{email || 'your email'}</span>! Check your inbox and enter the code below to reset your password.
       </p>
 
       <form onSubmit={handleConfirm} className="w-full flex flex-col items-center">
@@ -93,7 +93,7 @@ const OTP = () => {
               onKeyDown={(e) => handleKeyDown(e, i)}
               onPaste={handlePaste}
               value={otp[i]}
-              className="w-[47px] h-[49px] bg-[#141624] rounded-2xl text-center text-xl font-bold text-[#ffffff] outline-none border border-transparent focus:border-[#2563EB]/50"
+              className="w-[47px] h-[49px] bg-[#ffffff] rounded-2xl text-center text-xl font-bold text-[#0e1217] outline-none border border-[#e6e4df] focus:border-[#205943]"
             />
           ))}
         </div>
@@ -101,7 +101,7 @@ const OTP = () => {
         <button 
           type="submit"
           disabled={isPending}
-          className="w-full mt-2 bg-linear-to-t from-[#00135B] via-[#02060F] to-[#00104E] text-white text-sm font-medium py-3.5 rounded-full border border-[#1D4ED8] shadow-[0_0_20px_rgba(29,78,216,0.25)] hover:shadow-[0_0_25px_rgba(29,78,216,0.4)] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full mt-2 bg-linear-to-t from-[#173623] via-[#0a170f] to-[#11291b] text-white text-sm font-medium py-3.5 rounded-full border border-[#e6e4df] shadow-[0_0_20px_rgba(59,107,79,0.25)] hover:shadow-[0_0_25px_rgba(59,107,79,0.4)] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isPending ? (
             <>
@@ -114,9 +114,9 @@ const OTP = () => {
         </button>
       </form>
      
-      <div className="mt-4 text-[12px] text-gray-400">
+      <div className="mt-4 text-[12px] text-[#9fa5ac]">
         You can resend the code in 56 Seconds?{" "}
-        <Link to="/auth/forgot/password" className="text-[#2563EB] hover:text-blue-400">
+        <Link to="/auth/forgot/password" className="text-[#205943] hover:text-green-400">
           Resend Code
         </Link>
       </div>

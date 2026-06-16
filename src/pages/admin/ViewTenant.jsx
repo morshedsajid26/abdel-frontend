@@ -12,7 +12,7 @@ const ViewTenant = () => {
 
   if (!tenant) {
     return (
-      <div className="p-6 text-white text-center">
+      <div className="p-6 text-[#0e1217] text-center">
         <h2 className="text-2xl font-bold">Tenant not found</h2>
       </div>
     );
@@ -24,28 +24,28 @@ const ViewTenant = () => {
       Title: "Date",
       width: "20%",
       sortable: true,
-      render: (row) => <div className="text-left text-gray-200">{row.date}</div>
+      render: (row) => <div className="text-left text-[#0e1217]">{row.date}</div>
     },
     {
       key: "plan",
       Title: "Plan",
       width: "20%",
       sortable: true,
-      render: (row) => <div className="text-left text-gray-200">{row.plan}</div>
+      render: (row) => <div className="text-left text-[#0e1217]">{row.plan}</div>
     },
     {
       key: "invoice",
       Title: "Invoice",
       width: "20%",
       sortable: true,
-      render: (row) => <div className="text-left text-gray-200">{row.invoice}</div>
+      render: (row) => <div className="text-left text-[#0e1217]">{row.invoice}</div>
     },
     {
       key: "amount",
       Title: "Amount",
       width: "20%",
       sortable: true,
-      render: (row) => <div className="text-left text-gray-200">{row.amount}</div>
+      render: (row) => <div className="text-left text-[#0e1217]">{row.amount}</div>
     },
     {
       key: "status",
@@ -54,7 +54,7 @@ const ViewTenant = () => {
       sortable: true,
       render: (row) => (
         <div className="text-left">
-          <span className="w-[85px] inline-block text-center px-2 py-1 text-[11px] font-medium text-white rounded-[4px] bg-[#4285F4]">
+          <span className="w-[85px] inline-block text-center px-2 py-1 text-[11px] font-medium text-[#0e1217] rounded-[4px] bg-[#4285F4]">
             {row.status}
           </span>
         </div>
@@ -67,8 +67,8 @@ const ViewTenant = () => {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
         <div className="space-y-3">
-          <h1 className="text-white text-2xl font-bold">{tenant.name}</h1>
-          <div className="flex flex-wrap items-center gap-4 text-gray-400 text-sm">
+          <h1 className="text-[#0e1217] text-2xl font-bold">{tenant.name}</h1>
+          <div className="flex flex-wrap items-center gap-4 text-[#9fa5ac] text-sm">
             <div className="flex items-center gap-1.5">
               <Icon icon="lucide:mail" className="text-lg" />
               <span>{tenant.email}</span>
@@ -93,8 +93,8 @@ const ViewTenant = () => {
 
       {/* Billing History Section */}
       <div className="space-y-4">
-        <h2 className="text-white text-xl font-semibold">Billing History</h2>
-        <div className="bg-[#191919] rounded-2xl border border-gray-800/50 overflow-hidden w-full">
+        <h2 className="text-[#0e1217] text-xl font-semibold">Billing History</h2>
+        <div className="bg-[#ffffff] rounded-2xl border border-[#e6e4df] overflow-hidden w-full">
           <Table 
             TableHeads={columns} 
             TableRows={billingData} 

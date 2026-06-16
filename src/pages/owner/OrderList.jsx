@@ -46,7 +46,7 @@ const OrderList = () => {
         <div className="flex justify-center">
           <button 
             onClick={() => handleViewClick(row)}
-            className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-800 rounded-lg"
+            className="text-[#9fa5ac] hover:text-[#0e1217] transition-colors p-2 hover:bg-[#edebe5] rounded-lg"
           >
             <Eye className="w-5 h-5" />
           </button>
@@ -68,28 +68,28 @@ const OrderList = () => {
     <div>
       <Breadcrumb text="You can see your order" />
 
-      <div className="bg-[#191919] border border-[#1A1A1A] rounded-2xl overflow-hidden shadow-sm">
+      <div className="bg-[#ffffff] border border-[#e6e4df] rounded-2xl overflow-hidden shadow-sm">
         <Table 
           TableHeads={columns} 
           TableRows={orders} 
-          headClass=" border-b border-[#1A1A1A] text-gray-200 whitespace-nowrap last:[&>div]:justify-center"
+          headClass=" border-b border-[#e6e4df] text-[#0e1217] whitespace-nowrap last:[&>div]:justify-center"
           tableClass="border-none"
         />
       </div>
 
       {/* View Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 text-white">
-           <div className="bg-[#111111] border border-[#1A1A1A] rounded-[20px] w-full max-w-[700px] overflow-hidden relative shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 text-[#0e1217]">
+           <div className="bg-[#ffffff] border border-[#e6e4df] rounded-[20px] w-full max-w-[700px] overflow-hidden relative shadow-2xl">
               
               {/* Header */}
-              <div className="px-8 py-6 border-b border-[#1A1A1A] flex justify-between items-center">
-                <h2 className="text-[17px] text-gray-200">
-                  Order Summary <span className="text-gray-400">({selectedOrder?.customerName})</span>
+              <div className="px-8 py-6 border-b border-[#e6e4df] flex justify-between items-center">
+                <h2 className="text-[17px] text-[#0e1217]">
+                  Order Summary <span className="text-[#9fa5ac]">({selectedOrder?.customerName})</span>
                 </h2>
                 <button 
                   onClick={() => setIsModalOpen(false)}
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-[#9fa5ac] hover:text-[#0e1217] transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -99,24 +99,24 @@ const OrderList = () => {
               <div className="px-8 py-2">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="border-b border-[#1A1A1A]">
-                      <th className="py-4 text-[14px] font-semibold text-white">Product name</th>
-                      <th className="py-4 text-[14px] font-semibold text-white text-center">Order Quantity</th>
-                      <th className="py-4 text-[14px] font-semibold text-white">Time</th>
-                      <th className="py-4 text-[14px] font-semibold text-white text-right">Price</th>
+                    <tr className="border-b border-[#e6e4df]">
+                      <th className="py-4 text-[14px] font-semibold text-[#0e1217]">Product name</th>
+                      <th className="py-4 text-[14px] font-semibold text-[#0e1217] text-center">Order Quantity</th>
+                      <th className="py-4 text-[14px] font-semibold text-[#0e1217]">Time</th>
+                      <th className="py-4 text-[14px] font-semibold text-[#0e1217] text-right">Price</th>
                     </tr>
                   </thead>
                   <tbody>
                     {orderProducts.map((product) => (
-                      <tr key={product.id} className="border-b border-[#1A1A1A]">
-                        <td className="py-5 text-[14px] text-gray-300">{product.name}</td>
-                        <td className="py-5 text-[14px] text-gray-300 text-center">
-                          <span onClick={() => handleQuantityChange(product.id, -1)} className="text-gray-500 mr-3 cursor-pointer select-none hover:text-white transition-colors">—</span>
+                      <tr key={product.id} className="border-b border-[#e6e4df]">
+                        <td className="py-5 text-[14px] text-[#9fa5ac]">{product.name}</td>
+                        <td className="py-5 text-[14px] text-[#9fa5ac] text-center">
+                          <span onClick={() => handleQuantityChange(product.id, -1)} className="text-[#9fa5ac] mr-3 cursor-pointer select-none hover:text-[#0e1217] transition-colors">—</span>
                           <span className="inline-block w-8">{product.quantity}</span>
-                          <span onClick={() => handleQuantityChange(product.id, 1)} className="text-gray-500 ml-3 cursor-pointer select-none hover:text-white transition-colors">+</span>
+                          <span onClick={() => handleQuantityChange(product.id, 1)} className="text-[#9fa5ac] ml-3 cursor-pointer select-none hover:text-[#0e1217] transition-colors">+</span>
                         </td>
-                        <td className="py-5 text-[14px] text-gray-300">{product.time}</td>
-                        <td className="py-5 text-[14px] text-gray-300 text-right">{product.price}</td>
+                        <td className="py-5 text-[14px] text-[#9fa5ac]">{product.time}</td>
+                        <td className="py-5 text-[14px] text-[#9fa5ac] text-right">{product.price}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -127,7 +127,7 @@ const OrderList = () => {
               <div className="px-8 py-6 flex justify-end gap-4 mt-2">
                 <button 
                   onClick={() => window.print()}
-                  className="flex items-center gap-2 bg-[#1A2255] hover:bg-[#232D70] transition-colors text-white px-6 py-2.5 rounded-[10px] text-[13px] font-medium"
+                  className="flex items-center gap-2 bg-[#edebe5] hover:bg-[#e6e4df] transition-colors text-[#0e1217] px-6 py-2.5 rounded-[10px] text-[13px] font-medium"
                 >
                   <Printer className="w-4 h-4" />
                   Print
@@ -162,7 +162,7 @@ const OrderList = () => {
                     // Save the PDF
                     doc.save(`order_${selectedOrder?.customerName?.replace(/\s+/g, '_') || 'download'}.pdf`);
                   }}
-                  className="flex items-center gap-2 bg-[#1A2255] hover:bg-[#232D70] transition-colors text-white px-6 py-2.5 rounded-[10px] text-[13px] font-medium"
+                  className="flex items-center gap-2 bg-[#edebe5] hover:bg-[#e6e4df] transition-colors text-[#0e1217] px-6 py-2.5 rounded-[10px] text-[13px] font-medium"
                 >
                   <Download className="w-4 h-4" />
                   Download

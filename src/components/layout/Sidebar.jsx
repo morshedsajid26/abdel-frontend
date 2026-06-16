@@ -54,8 +54,8 @@ export default function Sidebar({ isOpen, onClose }) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-30 w-64 bg-[#0E0E10] text-[#ffffff]
-        border-r border-[#262626]
+        className={`fixed inset-y-0 left-0 z-30 w-64 bg-[#ffffff] text-[#0e1217]
+        border-r border-[#e6e4df]
         transform transition-transform duration-300 
         ${isOpen ? "translate-x-0" : "-translate-x-full"}
         2xl:static 2xl:translate-x-0`}
@@ -63,17 +63,16 @@ export default function Sidebar({ isOpen, onClose }) {
         {/* Mobile Close */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-40 p-2 rounded-md bg-[#2563EB] text-white 2xl:hidden cursor-pointer"
+          className="absolute top-4 right-4 z-40 p-2 rounded-md bg-[#205943] text-white 2xl:hidden cursor-pointer"
         >
           <FiX size={20} />
         </button>
 
         <div className="flex h-full flex-col">
           {/* Header */}
-          <div className="px-6 py-6 flex  items-center gap-4">
-            <Image src="/logo.png" alt="Company Logo" />
-
-          
+          <div className="px-6 py-6 flex items-center gap-2 text-[#0e1217]">
+            <Icon icon="lucide:audio-lines" className="text-2xl text-[#205943]" />
+            <span className="text-xl font-bold tracking-wider">FOODVOICE</span>
           </div>
 
           {/* Navigation */}
@@ -86,8 +85,8 @@ export default function Sidebar({ isOpen, onClose }) {
                 className={`flex  items-center gap-4 px-2 py-3.5 rounded-xl transition-all border border-l-[4px]
                   ${
                     isActivePath(item.path)
-                      ? "border-[#2563EB]/30 border-l-[#0F42FF] bg-[#18181A] text-white"
-                      : "border-transparent border-l-transparent text-[#D1D5DB] hover:bg-[#18181A] hover:text-white"
+                      ? "border-[#205943]/30 border-l-[#419977] bg-[#e8ecea] text-[#0e1217]"
+                      : "border-transparent border-l-transparent text-[#50565c] hover:bg-[#e8ecea] hover:text-[#0e1217]"
                   }`}
               >
                 <Icon icon={item.icon} width="24" className="text-current" />
@@ -100,7 +99,7 @@ export default function Sidebar({ isOpen, onClose }) {
           {/* <div className="p-4 ">
             <button
               // onClick={handleLogout}
-              className="flex w-full items-center gap-3 px-4 py-3 rounded-lg text-[#E7000B] hover:bg-[#F6A62D] hover:text-white transition cursor-pointer"
+              className="flex w-full items-center gap-3 px-4 py-3 rounded-lg text-[#E7000B] hover:bg-[#F6A62D] hover:text-[#0e1217] transition cursor-pointer"
             >
               <Icon icon="material-symbols:logout" width="20" />
               Log Out

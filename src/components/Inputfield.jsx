@@ -20,7 +20,7 @@ const InputField = ({
 
       <div className="relative w-full">
         {leftIcon && (
-          <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+          <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#9fa5ac]">
             {leftIcon}
           </div>
         )}

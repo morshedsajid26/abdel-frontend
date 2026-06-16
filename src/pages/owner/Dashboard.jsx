@@ -4,24 +4,24 @@ import CallDuration from '../../components/CallDuration';
 import OverallReports from '../../components/OverallReports';
 
 
-const StatCard = ({ title, value, icon, iconBg = "bg-[#262626]", trend, trendText }) => {
+const StatCard = ({ title, value, icon, iconBg = "bg-[#edebe5]", trend, trendText }) => {
   return (
-    <div className="relative overflow-hidden bg-[#18181A] rounded-2xl p-3 border border-gray-800/50 flex flex-col h-full ">
+    <div className="relative overflow-hidden bg-[#ffffff] shadow-sm border border-[#e6e4df] rounded-2xl p-3 border border-[#e6e4df] flex flex-col h-full ">
       {/* Header */}
       <div className="flex items-center gap-3 relative z-10">
         <div className={`w-10 h-10 rounded-full flex items-center justify-center ${iconBg}`}>
-          <Icon icon={icon} className="text-white text-lg" />
+          <Icon icon={icon} className="text-[#0e1217] text-lg" />
         </div>
-        <span className="text-[15px] font-medium text-gray-200">{title}</span>
+        <span className="text-[15px] font-medium text-[#0e1217]">{title}</span>
       </div>
 
       {/* Value */}
       <div className="mt-5 mb-5 relative z-10">
-        <h3 className="text-xl font-bold text-white">{value}</h3>
+        <h3 className="text-xl font-bold text-[#0e1217]">{value}</h3>
       </div>
 
       {/* Trend */}
-      <div className="flex items-center justify-between mt-auto text-[11px] text-gray-400 relative z-10">
+      <div className="flex items-center justify-between mt-auto text-[11px] text-[#9fa5ac] relative z-10">
         <span className="flex items-center gap-1 font-medium">
           {trend} <Icon icon="lucide:arrow-up-right" className="text-[10px]" />
         </span>
@@ -33,8 +33,8 @@ const StatCard = ({ title, value, icon, iconBg = "bg-[#262626]", trend, trendTex
         <svg viewBox="0 0 200 50" preserveAspectRatio="none" className="w-full h-full">
           <defs>
             <linearGradient id={`gradient-${title.replace(/\s+/g, '-')}`} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#2563EB" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#2563EB" stopOpacity="0" />
+              <stop offset="0%" stopColor="#3b6b4f" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#3b6b4f" stopOpacity="0" />
             </linearGradient>
           </defs>
           <path 
@@ -44,7 +44,7 @@ const StatCard = ({ title, value, icon, iconBg = "bg-[#262626]", trend, trendTex
           <path 
             d="M0,45 C30,45 40,15 65,15 C90,15 100,40 130,40 C155,40 170,20 185,20 C195,20 198,30 200,30" 
             fill="none" 
-            stroke="#0F42FF" 
+            stroke="#4a8b66" 
             strokeWidth="2" 
           />
         </svg>
@@ -64,7 +64,7 @@ export default function Dashboard() {
       title: "Total Call Duration",
       value: stats?.totalCallDuration?.value || "0 hr 0 min",
       icon: "lucide:phone-call",
-      iconBg: "bg-[#2563EB]",
+      iconBg: "bg-[#205943]",
       trend: stats?.totalCallDuration?.change || "0%",
       trendText: stats?.totalCallDuration?.weeklyChange || "+0 this week min"
     },
@@ -72,7 +72,7 @@ export default function Dashboard() {
       title: "Today Total Call",
       value: stats?.todayTotalCall?.value || "Call 0",
       icon: "lucide:phone-incoming",
-      iconBg: "bg-[#262626]",
+      iconBg: "bg-[#edebe5]",
       trend: stats?.todayTotalCall?.change || "0%",
       trendText: stats?.todayTotalCall?.weeklyChange || "+0 this week"
     },
@@ -80,7 +80,7 @@ export default function Dashboard() {
       title: "Total Order",
       value: stats?.totalOrder?.value || "0",
       icon: "lucide:shopping-bag",
-      iconBg: "bg-[#262626]",
+      iconBg: "bg-[#edebe5]",
       trend: stats?.totalOrder?.change || "0%",
       trendText: stats?.totalOrder?.weeklyChange || "+0 this week"
     }
@@ -89,7 +89,7 @@ export default function Dashboard() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <Icon icon="lucide:loader-2" className="animate-spin text-[#2563EB]" width="40" />
+        <Icon icon="lucide:loader-2" className="animate-spin text-[#205943]" width="40" />
       </div>
     );
   }

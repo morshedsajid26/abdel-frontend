@@ -57,16 +57,16 @@ const UploadExcel = () => {
   }
 
   return (
-    <div className="bg-[#191919] p-6 rounded-xl border border-white/5 relative">
+    <div className="bg-[#ffffff] p-6 rounded-xl border border-[#cccccc] relative">
       <div className="text-center mb-6">
-        <h2 className="text-lg font-medium text-white mb-2">Upload Excel file</h2>
-        <p className="text-sm text-gray-400">
+        <h2 className="text-lg font-medium text-[#0e1217] mb-2">Upload Excel file</h2>
+        <p className="text-sm text-[#9fa5ac]">
           Upload spreadsheets with product data that will be used to train your AI model
         </p>
       </div>
 
       <div 
-        className={`border border-dashed rounded-xl p-10 flex flex-col items-center justify-center bg-[#1a1a1a]/50 mb-16 transition-colors ${
+        className={`border border-dashed rounded-xl p-10 flex flex-col items-center justify-center bg-[#f6f3eb] mb-16 transition-colors ${
           isDragging ? 'border-blue-500 bg-blue-500/10' : 'border-white/10 hover:border-white/20'
         } cursor-pointer min-h-[250px]`}
         onDragOver={handleDragOver}
@@ -89,25 +89,25 @@ const UploadExcel = () => {
               {files.map((file, index) => (
                 <div 
                   key={index} 
-                  className="relative flex flex-col items-center bg-[#252525] p-3 rounded-xl border border-white/5 hover:border-blue-500/30 transition-colors group"
+                  className="relative flex flex-col items-center bg-[#ffffff] p-3 rounded-xl border border-[#cccccc] hover:border-blue-500/30 transition-colors group"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <FileSpreadsheet className="w-8 h-8 text-blue-400 mb-2" />
+                  <FileSpreadsheet className="w-8 h-8 text-green-400 mb-2" />
                   <button 
                     onClick={(e) => removeFile(e, index)}
                     className="absolute -top-2 -right-2 bg-red-500 rounded-full p-1 hover:bg-red-600 transition-colors opacity-0 group-hover:opacity-100 shadow-lg"
                     title="Remove file"
                   >
-                    <X className="w-3 h-3 text-white" />
+                    <X className="w-3 h-3 text-[#0e1217]" />
                   </button>
-                  <h3 className="text-xs text-gray-200 truncate w-20 text-center" title={file.name}>
+                  <h3 className="text-xs text-[#0e1217] truncate w-20 text-center" title={file.name}>
                     {file.name}
                   </h3>
-                  <p className="text-[10px] text-gray-500 mt-1">{(file.size / (1024 * 1024)).toFixed(2)} MB</p>
+                  <p className="text-[10px] text-[#9fa5ac] mt-1">{(file.size / (1024 * 1024)).toFixed(2)} MB</p>
                 </div>
               ))}
             </div>
-            <div className="mt-6 flex items-center justify-center space-x-2 text-sm text-gray-400 hover:text-white transition-colors ">
+            <div className="mt-6 flex items-center justify-center space-x-2 text-sm text-[#9fa5ac] hover:text-[#0e1217] transition-colors ">
               <CloudUpload className="w-4 h-4" />
               <span>Click or drag to add more files</span>
             </div>
@@ -115,14 +115,14 @@ const UploadExcel = () => {
         ) : (
           <>
             <div className="w-12 h-12 flex items-center justify-center mb-4">
-              <CloudUpload className={`w-10 h-10 ${isDragging ? 'text-blue-400' : 'text-gray-400'}`} strokeWidth={1.5} />
+              <CloudUpload className={`w-10 h-10 ${isDragging ? 'text-green-400' : 'text-[#9fa5ac]'}`} strokeWidth={1.5} />
             </div>
-            <h3 className="text-base text-gray-200 mb-1">
+            <h3 className="text-base text-[#0e1217] mb-1">
               {isDragging ? 'Drop files here' : 'Drag and drop files here'}
             </h3>
-            <p className="text-sm text-gray-500 mb-6 text-center">or click to browse files from your computer</p>
+            <p className="text-sm text-[#9fa5ac] mb-6 text-center">or click to browse files from your computer</p>
             
-            <button className="px-8 py-2 rounded-full border border-[#0F42FF] bg-linear-to-t from-[#00135B] via-[#02060F] to-[#00104E] text-sm text-white transition-all pointer-events-none">
+            <button className="px-8 py-2 rounded-full border border-[#419977] bg-linear-to-t from-[#173623] via-[#0a170f] to-[#11291b] text-sm text-white transition-all pointer-events-none">
               Upload Files
             </button>
           </>
@@ -133,8 +133,8 @@ const UploadExcel = () => {
         <button 
           className={`px-6 py-2.5 rounded-full text-sm transition-all ${
             files.length > 0 
-              ? 'border-[#0F42FF] bg-linear-to-t from-[#00135B] via-[#02060F] to-[#00104E] text-white shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:shadow-[0_0_20px_rgba(37,99,235,0.6)]' 
-              : 'border border-blue-600/50 bg-[#0a0a2a] text-gray-400 cursor-not-allowed opacity-50'
+              ? 'border-[#419977] bg-linear-to-t from-[#173623] via-[#0a170f] to-[#11291b] text-white shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:shadow-[0_0_20px_rgba(37,99,235,0.6)]' 
+              : 'border border-blue-600/50 bg-[#e6e4df] text-gray-400 cursor-not-allowed opacity-50'
           }`}
           disabled={files.length === 0}
         >

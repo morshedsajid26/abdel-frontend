@@ -15,7 +15,7 @@ const AiTraining = () => {
 
       <div className="mt-6">
         {/* Navigation Bar */}
-        <div className="flex border-b border-white/10 mb-6">
+        <div className="flex border-b border-[#e6e4df] mb-6">
           <button
             onClick={() => setActiveTab("pdf")}
             className={`px-4 py-2 text-sm font-medium transition-all ${

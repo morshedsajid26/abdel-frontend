@@ -37,8 +37,8 @@ const OverallReports = ({ report }) => {
     : defaultChartData;
 
   return (
-    <div className="w-full h-full bg-[#191919] rounded-2xl p-6 border border-gray-800/50 flex flex-col">
-      <h2 className="text-xl font-semibold text-white mb-8">Overall Report</h2>
+    <div className="w-full h-full bg-[#ffffff] rounded-2xl p-6 border border-[#e6e4df] flex flex-col">
+      <h2 className="text-xl font-semibold text-[#0e1217] mb-8">Overall Report</h2>
       
       {/* Chart Container */}
       <div className="relative flex justify-center items-center h-[260px] mb-8">
@@ -63,8 +63,8 @@ const OverallReports = ({ report }) => {
         
         {/* Center Text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-          <span className="text-white text-sm font-medium">Over all</span>
-          <span className="text-white text-4xl font-bold mt-1">{percentage}%</span>
+          <span className="text-[#0e1217] text-sm font-medium">Over all</span>
+          <span className="text-[#0e1217] text-4xl font-bold mt-1">{percentage}%</span>
         </div>
       </div>
 
@@ -76,7 +76,7 @@ const OverallReports = ({ report }) => {
               className="w-6 h-6 rounded-full shrink-0" 
               style={{ backgroundColor: item.color }}
             />
-            <span className="text-white text-[15px] font-medium">{item.name}</span>
+            <span className="text-[#0e1217] text-[15px] font-medium">{item.name}</span>
           </div>
         ))}
       </div>

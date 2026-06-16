@@ -7,7 +7,7 @@ export default function ToggleButton({ isAnnual, setIsAnnual }) {
       {/* Monthly Label */}
       <span
         className={` text-2xl ${
-          !isAnnual ? "text-[#ffffff]" : "text-gray-500"
+          !isAnnual ? "text-[#0e1217]" : "text-[#9fa5ac]"
         }`}
       >
         Monthly
@@ -17,12 +17,12 @@ export default function ToggleButton({ isAnnual, setIsAnnual }) {
       <button
         onClick={() => setIsAnnual(!isAnnual)}
         className={`relative w-13 h-7 flex items-center rounded-full transition-colors duration-300 cursor-pointer ${
-          isAnnual ? "bg-[#00135B]" : "bg-[#D1D5DC]"
+          isAnnual ? "bg-[#205943]" : "bg-[#D1D5DC]"
         }`}
       >
         <span
           className={`absolute w-5 h-5 rounded-full transition-transform duration-300 ${
-            isAnnual ? "md:translate-x-7 translate-x-7 bg-white" : "md:translate-x-1 translate-x-1 bg-white"
+            isAnnual ? "md:translate-x-7 translate-x-7 bg-[#ffffff]" : "md:translate-x-1 translate-x-1 bg-[#ffffff]"
           }`}
         ></span>
       </button>
@@ -30,7 +30,7 @@ export default function ToggleButton({ isAnnual, setIsAnnual }) {
       {/* Yearly Label */}
       <span
         className={`text-2xl ${
-          isAnnual ? "text-[#ffffff]" : "text-gray-500"
+          isAnnual ? "text-[#0e1217]" : "text-[#9fa5ac]"
         }`}
       >
         Yearly

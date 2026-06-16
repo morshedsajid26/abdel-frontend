@@ -22,14 +22,14 @@ const BillingHistory = () => {
 
   return (
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <h2 className="text-xl font-semibold text-white mb-1">Billing History</h2>
-      <p className="text-sm text-gray-400 mb-8">Your subscription plan Billing</p>
+      <h2 className="text-xl font-semibold text-[#0e1217] mb-1">Billing History</h2>
+      <p className="text-sm text-[#9fa5ac] mb-8">Your subscription plan Billing</p>
 
-      <div className="bg-[#191919] rounded-xl border border-white/5 overflow-hidden">
+      <div className="bg-[#ffffff] rounded-xl border border-[#cccccc] overflow-hidden">
         <Table 
           TableHeads={tableHeads} 
           TableRows={tableRows}
-          headClass=" border-b border-[#1A1A1A] text-gray-200 whitespace-nowrap last:[&>div]:justify-center"
+          headClass=" border-b border-[#e6e4df] text-[#0e1217] whitespace-nowrap last:[&>div]:justify-center"
           tableClass="border-none"
         />
       </div>

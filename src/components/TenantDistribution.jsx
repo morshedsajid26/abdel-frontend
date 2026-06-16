@@ -33,17 +33,17 @@ const TenantDistribution = () => {
   const [filter, setFilter] = useState('Weekly');
 
   return (
-    <div className="bg-[#191919] rounded-2xl p-6 border border-gray-800/50 flex flex-col h-full min-h-[400px]">
+    <div className="bg-[#ffffff] rounded-2xl p-6 border border-[#e6e4df] flex flex-col h-full min-h-[400px]">
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-white text-lg font-medium">Tenant Status Distribution</h3>
+        <h3 className="text-[#0e1217] text-lg font-medium">Tenant Status Distribution</h3>
         <div className="relative z-20">
           <Dropdown 
             options={["Weekly","Monthly", "Yearly", ]}
             value={filter}
             onSelect={(val) => setFilter(val)}
-            inputClass="!bg-transparent !border-[#2563EB] !rounded-full !py-1.5 !px-4 !text-sm !text-gray-300 text-center min-w-[120px] focus:outline-none"
-            optionClass="!bg-[#18181A] !border-[#2563EB] !text-gray-300"
-            icon="!text-gray-300 right-2"
+            inputClass="!bg-transparent !border-[#e6e4df] !rounded-full !py-1.5 !px-4 !text-sm !text-[#9fa5ac] text-center min-w-[120px] focus:outline-none"
+            optionClass="!bg-[#e8ecea] !border-[#e6e4df] !text-[#9fa5ac]"
+            icon="!text-[#0e1217] right-2"
           />
         </div>
       </div>
@@ -75,7 +75,7 @@ const TenantDistribution = () => {
         {data.map((entry, index) => (
           <div key={index} className="flex items-center gap-2">
             <div className="w-3.5 h-3.5" style={{ backgroundColor: entry.color }}></div>
-            <span className="text-[15px] font-medium text-gray-400">{index}</span>
+            <span className="text-[15px] font-medium text-[#9fa5ac]">{index}</span>
           </div>
         ))}
       </div>

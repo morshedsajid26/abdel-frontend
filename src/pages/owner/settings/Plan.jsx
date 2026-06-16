@@ -3,19 +3,19 @@ import { Sparkles, Check, X } from 'lucide-react'
 import ToggleButton from '../../../components/ToogleButton'
 
 const PlanCard = ({ plan, isAnnual }) => (
-  <div className={`bg-[#0E0E10] border ${plan.isPopular ? 'border-blue-600/30 shadow-[0_0_20px_rgba(37,99,235,0.05)]' : 'border-[#272727]'} p-6 rounded-[28px] flex flex-col gap-6 hover:border-[#333333] transition-all group h-full`}>
+  <div className={`bg-[#ffffff] border ${plan.isPopular ? 'border-blue-600/30 shadow-[0_0_20px_rgba(37,99,235,0.05)]' : 'border-[#e6e4df]'} p-6 rounded-[28px] flex flex-col gap-6 hover:border-[#e6e4df] transition-all group h-full`}>
     <div className="flex flex-col gap-5">
-      <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-[13px] font-medium w-fit transition-colors ${plan.isPopular ? 'bg-blue-600/10 text-blue-400 border border-blue-600/40' : 'bg-[#1A1A1A] text-gray-300 border border-[#272727]'}`}>
+      <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-[13px] font-medium w-fit transition-colors ${plan.isPopular ? 'bg-blue-600/10 text-green-400 border border-blue-600/40' : 'bg-[#f6f3eb] text-[#9fa5ac] border border-[#e6e4df]'}`}>
         {plan.name}
-        <Sparkles className={`w-3.5 h-3.5 ${plan.isPopular ? 'text-blue-400' : 'text-gray-400'}`} />
+        <Sparkles className={`w-3.5 h-3.5 ${plan.isPopular ? 'text-green-400' : 'text-[#9fa5ac]'}`} />
       </div>
       
       <div className="flex items-baseline gap-1.5">
-        <span className="text-white text-[32px] font-bold tracking-tight">{plan.price}</span>
-        <span className="text-gray-500 text-sm font-medium">/{isAnnual ? 'year' : 'month'}</span>
+        <span className="text-[#0e1217] text-[32px] font-bold tracking-tight">{plan.price}</span>
+        <span className="text-[#9fa5ac] text-sm font-medium">/{isAnnual ? 'year' : 'month'}</span>
       </div>
       
-      <p className="text-gray-400 text-[13px] leading-relaxed min-h-[40px]">
+      <p className="text-[#9fa5ac] text-[13px] leading-relaxed min-h-[40px]">
         {plan.description}
       </p>
     </div>
@@ -26,9 +26,9 @@ const PlanCard = ({ plan, isAnnual }) => (
           {feature.included ? (
             <Check className="w-4 h-4 text-blue-500/80" />
           ) : (
-            <X className="w-4 h-4 text-gray-600" />
+            <X className="w-4 h-4 text-[#50565c]" />
           )}
-          <span className={`text-[13px] ${feature.included ? 'text-gray-300' : 'text-gray-600'}`}>
+          <span className={`text-[13px] ${feature.included ? 'text-[#9fa5ac]' : 'text-[#50565c]'}`}>
             {feature.text}
           </span>
         </div>
@@ -36,7 +36,7 @@ const PlanCard = ({ plan, isAnnual }) => (
     </div>
 
     <div className="mt-auto">
-      <button className="w-full py-2.5 rounded-lg border border-[#0F42FF] bg-linear-to-t from-[#00135B] via-[#02060F] to-[#00104E] text-sm text-white shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:shadow-[0_0_20px_rgba(37,99,235,0.6)] transition-all">
+      <button className="w-full py-2.5 rounded-lg border border-[#419977] bg-linear-to-t from-[#173623] via-[#0a170f] to-[#11291b] text-sm text-white shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:shadow-[0_0_20px_rgba(37,99,235,0.6)] transition-all">
         {plan.buttonText || "Upgrade plan"}
       </button>
     </div>
@@ -114,8 +114,8 @@ const Plan = () => {
     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 mb-12">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-6 sm:gap-0">
         <div>
-          <h2 className="text-xl font-semibold text-white mb-1">Choose Your Plan</h2>
-          <p className="text-sm text-gray-400">Manage your subscription plan</p>
+          <h2 className="text-xl font-semibold text-[#0e1217] mb-1">Choose Your Plan</h2>
+          <p className="text-sm text-[#9fa5ac]">Manage your subscription plan</p>
         </div>
         <div className=" p-1.5   self-center sm:self-auto">
           <ToggleButton isAnnual={isAnnual} setIsAnnual={setIsAnnual} />
