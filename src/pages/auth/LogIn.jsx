@@ -99,9 +99,9 @@ export default function LogIn() {
       </button> */}
 
       {/* Sign Up Link */}
-      <div className="mt-8 text-[12px] text-[#9fa5ac]">
+      {/* <div className="mt-8 text-[12px] text-[#9fa5ac]">
         Don't have an account? <Link to="/auth/signup" className="text-[#205943] hover:text-green-400">Sign Up</Link>
-      </div>
+      </div> */}
     </div>
   );
 }

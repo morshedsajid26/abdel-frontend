@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Icon } from "@iconify/react";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Cookies from "js-cookie";
 
 const OTP = () => {
   const inputs = useRef([]);
@@ -10,6 +12,7 @@ const OTP = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const email = location.state?.email || "";
+  const axiosPublic = useAxiosPublic();
 
   const [isPending, setIsPending] = useState(false);
 
@@ -57,19 +60,37 @@ const OTP = () => {
     inputs.current[focusIndex]?.focus();
   };
 
-  const handleConfirm = (e) => {
+  const handleConfirm = async (e) => {
     e.preventDefault();
     const otpCode = otp.join("");
     if (otpCode.length < 6) {
       toast.error("Please enter the full 6-digit OTP");
       return;
     }
+    
+    if (!email) {
+      toast.error("Email is missing. Please restart the forgot password process.");
+      return;
+    }
+
     setIsPending(true);
-    setTimeout(() => {
+    try {
+      const response = await axiosPublic.post('/auth/verify-forgot-password-otp', { email, otp: otpCode });
+      if (response.data.success || response.status === 200) {
+        // Extract resetToken and store in cookies
+        const resetToken = response.data.resetToken || response.data.data?.resetToken;
+        if (resetToken) {
+          Cookies.set('resetToken', resetToken, { expires: 1, path: '/' });
+        }
+        
+        toast.success(response.data.message || 'OTP verified successfully!');
+        navigate('/auth/new/password');
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Failed to verify OTP');
+    } finally {
       setIsPending(false);
-      toast.success('OTP verified successfully!');
-      navigate('/auth/new/password', { state: { email, otp: otpCode } });
-    }, 1000);
+    }
   };
 
   return (

@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import Password from "../../components/Password";
 import { Icon } from "@iconify/react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Cookies from "js-cookie";
 
 const NewPass = () => {
-  const location = useLocation();
   const navigate = useNavigate();
   const [isPending, setIsPending] = useState(false);
-
-  const email = location.state?.email || "";
-  const otp = location.state?.otp || "";
+  const axiosPublic = useAxiosPublic();
 
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleReset = (e) => {
+  const handleReset = async (e) => {
     e.preventDefault();
     if (!newPassword || !confirmPassword) {
       toast.error("Please fill in both password fields");
@@ -25,12 +24,30 @@ const NewPass = () => {
       toast.error("Passwords do not match");
       return;
     }
+    
+    const resetToken = Cookies.get('resetToken');
+    if (!resetToken) {
+      toast.error("Reset token is missing or expired. Please verify OTP again.");
+      navigate('/auth/forgot/password');
+      return;
+    }
+
     setIsPending(true);
-    setTimeout(() => {
+    try {
+      const response = await axiosPublic.post('/auth/reset-password', 
+        { newPassword, confirmPassword },
+        { headers: { Authorization: `Bearer ${resetToken}` } }
+      );
+      if (response.data.success || response.status === 200) {
+        Cookies.remove('resetToken'); // Clean up token after successful reset
+        toast.success(response.data.message || "Password reset successfully!");
+        navigate("/auth/login");
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Failed to reset password');
+    } finally {
       setIsPending(false);
-      toast.success("Password reset successfully!");
-      navigate("/auth/success");
-    }, 1000);
+    }
   };
 
   return (

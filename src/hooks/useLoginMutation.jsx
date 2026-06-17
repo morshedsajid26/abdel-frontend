@@ -1,18 +1,18 @@
 import { useMutation } from "@tanstack/react-query";
-import useAxios from "./useAxios";
+import useAxiosPublic from "./useAxiosPublic";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import useAuth from "./useAuth";
 
 export const useLoginMutation = () => {
-  const axiosInstance = useAxios();
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const { setUser } = useAuth();
 
   return useMutation({
     mutationFn: async (credentials) => {
-      const response = await axiosInstance.post("/auth/login", credentials);
+      const response = await axiosPublic.post("/auth/login", credentials);
       return response.data;
     },
     onSuccess: (data) => {
@@ -34,7 +34,7 @@ export const useLoginMutation = () => {
       }
     },
     onError: (error) => {
-      const message = error.response?.data?.message || "Login failed";
+      const message = error.response?.data?.message || error.response?.data?.error || "Invalid email or password. Please try again.";
       toast.error(message);
     },
   });

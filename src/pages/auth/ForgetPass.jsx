@@ -3,24 +3,33 @@ import InputField from '../../components/Inputfield'
 import { Icon } from '@iconify/react'
 import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import useAxiosPublic from '../../hooks/useAxiosPublic'
 
 const ForgetPass = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [isPending, setIsPending] = useState(false);
+  const axiosPublic = useAxiosPublic();
 
-  const handleForgotPass = (e) => {
+  const handleForgotPass = async (e) => {
     e.preventDefault();
     if (!email) {
       toast.error('Please enter your email address');
       return;
     }
+    
     setIsPending(true);
-    setTimeout(() => {
+    try {
+      const response = await axiosPublic.post('/auth/forgot-password', { email });
+      if (response.data.success || response.status === 200) {
+        toast.success(response.data.message || 'OTP code sent successfully!');
+        navigate('/auth/verify/otp', { state: { email } });
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Failed to send OTP');
+    } finally {
       setIsPending(false);
-      toast.success('OTP code sent successfully!');
-      navigate('/auth/verify/otp', { state: { email } });
-    }, 1000);
+    }
   };
 
   return (
@@ -32,7 +41,7 @@ const ForgetPass = () => {
       
       <form onSubmit={handleForgotPass} className="w-full flex flex-col gap-5">
         <InputField
-          label="Your Registered Email"
+          label="Email"
           type="email"
           placeholder="Enter Email"
           value={email}
