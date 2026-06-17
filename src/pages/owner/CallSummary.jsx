@@ -68,7 +68,7 @@ const CallSummary = () => {
       <Breadcrumb text="You can see your AI call summary" />
 
       {/* Removed redundant overflow-x-auto, passing wrapperClass to Table to fix dropdown clipping scrollbar */}
-      <div className="bg-[#ffffff] border border-[#e6e4df] rounded-2xl shadow-sm overflow-x-auto min-h-[300px]">
+      <div className="bg-[#ffffff] border border-[#e6e4df] rounded-2xl shadow-sm overflow-visible">
         {isLoading ? (
           <div className="p-8 text-center text-[#9fa5ac]">Loading call history...</div>
         ) : error ? (
@@ -81,7 +81,7 @@ const CallSummary = () => {
             TableRows={calls} 
             headClass=" border-b border-[#e6e4df] text-[#0e1217] whitespace-nowrap"
             tableClass="border-none"
-            wrapperClass="min-h-[250px] pb-24"
+            wrapperClass="min-h-[150px] !overflow-visible"
           />
         )}
       </div>

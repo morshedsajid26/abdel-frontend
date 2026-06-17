@@ -174,7 +174,7 @@ const AgentManagement = () => {
         </button>
       </div>
 
-      <div className="bg-[#ffffff] border border-[#e6e4df] rounded-2xl shadow-sm overflow-hidden min-h-[300px]">
+      <div className="bg-[#ffffff] border border-[#e6e4df] rounded-2xl shadow-sm overflow-hidden">
         {isLoading ? (
           <div className="p-8 text-center text-[#9fa5ac]">Loading agents...</div>
         ) : error ? (

@@ -136,10 +136,10 @@ const Telephony = () => {
         </div>
       </div>
 
-        <div className="bg-[#ffffff] rounded-2xl border border-[#e6e4df] overflow-hidden w-full relative min-h-[200px]">
+        <div className="bg-[#ffffff] rounded-2xl border border-[#e6e4df] overflow-hidden w-full relative">
           {isLoading ? (
-            <div className="absolute inset-0 flex items-center justify-center bg-white/50 backdrop-blur-[1px] z-10">
-              <Icon icon="lucide:loader-2" className="animate-spin text-[#205943] text-4xl" />
+            <div className="flex items-center justify-center p-12 text-[#9fa5ac]">
+              <span className="animate-pulse">Loading telephony...</span>
             </div>
           ) : isError ? (
             <div className="absolute inset-0 flex flex-col items-center justify-center text-[#EA4335] px-4 text-center">

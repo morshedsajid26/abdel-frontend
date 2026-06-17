@@ -3,6 +3,7 @@ import { Eye, X, Printer, Download, Trash2 } from 'lucide-react'
 import { jsPDF } from "jspdf"
 import { useQuery } from '@tanstack/react-query'
 import useAxiosSecure from '../../hooks/useAxiosSecure'
+import { printInvoice, downloadInvoicePDF } from '../../utils/invoiceUtils'
 
 import Table from '../../components/Table'
 import Breadcrumb from '../../components/Breadcrumb'
@@ -143,42 +144,14 @@ const OrderList = () => {
               {/* Footer Actions */}
               <div className="border-t border-[#e6e4df] px-8 py-6 flex justify-end gap-4">
                 <button 
-                  onClick={() => window.print()}
+                  onClick={() => printInvoice(selectedOrder, orderProducts)}
                   className="flex items-center gap-2 bg-[#edebe5] hover:bg-[#e6e4df] transition-colors text-[#0e1217] px-6 py-2.5 rounded-[10px] text-[13px] font-medium"
                 >
                   <Printer className="w-4 h-4" />
                   Print
                 </button>
                 <button 
-                  onClick={() => {
-                    const doc = new jsPDF();
-                    
-                    // Title
-                    doc.setFontSize(18);
-                    doc.text("Order Summary", 20, 20);
-                    
-                    // Order Info
-                    doc.setFontSize(12);
-                    doc.text(`Order No: ${selectedOrder?.orderNumber || ''}`, 20, 35);
-                    doc.text(`Customer Name: ${selectedOrder?.customerName || ''}`, 20, 45);
-                    doc.text(`Phone: ${selectedOrder?.customerPhone || ''}`, 20, 55);
-                    doc.text(`Date: ${selectedOrder?.date || ''}`, 20, 65);
-                    doc.text(`Total: ${selectedOrder?.total || ''}`, 20, 75);
-                    
-                    // Products List
-                    doc.setFontSize(14);
-                    doc.text("Products:", 20, 95);
-                    
-                    doc.setFontSize(12);
-                    let yPos = 105;
-                    orderProducts.forEach(product => {
-                      doc.text(`- ${product.name} (Size: ${product.size || 'N/A'}): ${product.quantity}x`, 25, yPos);
-                      yPos += 10;
-                    });
-                    
-                    // Save the PDF
-                    doc.save(`order_${selectedOrder?.orderNumber?.replace('#', '') || 'download'}.pdf`);
-                  }}
+                  onClick={() => downloadInvoicePDF(selectedOrder, orderProducts)}
                   className="flex items-center gap-2 bg-[#edebe5] hover:bg-[#e6e4df] transition-colors text-[#0e1217] px-6 py-2.5 rounded-[10px] text-[13px] font-medium"
                 >
                   <Download className="w-4 h-4" />
