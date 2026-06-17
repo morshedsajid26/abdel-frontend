@@ -8,16 +8,15 @@ import { Icon } from "@iconify/react";
 
 export default function AuthLayout() {
   const { user, loading } = useAuth();
-  const role = Cookies.get("role");
+  const role = Cookies.get("role") || user?.role;
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center text-[#9fa5ac]">Loading...</div>;
   }
 
   if (user) {
-    if (role === "admin") return <Navigate to="/admin/dashboard" replace />;
-    if (role === "owner") return <Navigate to="/owner/dashboard" replace />;
-    return <Navigate to="/" replace />;
+    if (role === "SYSTEM_OWNER") return <Navigate to="/admin/dashboard" replace />;
+    return <Navigate to="/owner/dashboard" replace />;
   }
 
   return (

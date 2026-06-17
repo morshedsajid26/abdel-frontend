@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 export default function DashboardLayout() {
   const { user, loading } = useAuth();
   const location = useLocation();
-  const role = Cookies.get("role");
+  const role = Cookies.get("role") || user?.role;
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -21,10 +21,10 @@ export default function DashboardLayout() {
   }
 
   // Role-based protection: prevent owner from accessing admin routes and vice-versa
-  if (location.pathname.startsWith('/admin') && role !== 'admin') {
+  if (location.pathname.startsWith('/admin') && role !== 'SYSTEM_OWNER') {
     return <Navigate to="/owner/dashboard" replace />;
   }
-  if (location.pathname.startsWith('/owner') && role !== 'owner' && role !== 'admin') { // if admin has access to owner? No, let's keep it strict or allow. Admin is admin.
+  if (location.pathname.startsWith('/owner') && role !== 'RESTAURANT_OWNER' && role !== 'SYSTEM_OWNER') { // if admin has access to owner? No, let's keep it strict or allow. Admin is admin.
     return <Navigate to="/admin/dashboard" replace />;
   }
 

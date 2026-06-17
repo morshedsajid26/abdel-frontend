@@ -24,9 +24,10 @@ const Navbar = () => {
   const location = useLocation();
 
   const { user } = useAuth();
-  const userRole = Cookies.get("role") || (user?.role === "SYSTEM_OWNER" ? "admin" : "owner");
-  const dashboardPath = `/${userRole}/dashboard`;
-  const dashboardLabel = userRole === "admin" ? "Admin" : "Business Owner";
+  const role = Cookies.get("role") || user?.role;
+  const isSystemOwner = role === "SYSTEM_OWNER";
+  const dashboardPath = isSystemOwner ? "/admin/dashboard" : "/owner/dashboard";
+  const dashboardLabel = isSystemOwner ? "Admin" : "Business Owner";
 
   useEffect(() => {
     if (location.pathname !== "/") return;

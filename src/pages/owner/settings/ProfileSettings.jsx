@@ -5,6 +5,15 @@ import Password from '../../../components/Password'
 
 import useAuth from '../../../hooks/useAuth'
 import toast from 'react-hot-toast'
+// Fetch Profile data (mock moved outside to prevent infinite loops)
+const profileResponse = {
+  data: {
+    firstName: 'Mock',
+    lastName: 'User',
+    email: 'mock@example.com',
+    avatar: null
+  }
+};
 
 const ProfileSettings = () => {
 
@@ -27,14 +36,6 @@ const ProfileSettings = () => {
 
   // Fetch Profile data
   const isLoading = false;
-  const profileResponse = {
-    data: {
-      firstName: 'Mock',
-      lastName: 'User',
-      email: 'mock@example.com',
-      avatar: null
-    }
-  };
   const refetch = () => {};
 
   // Helper to get full avatar URL

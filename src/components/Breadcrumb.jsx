@@ -12,7 +12,7 @@ const Breadcrumb = ({text}) => {
     const customTitles = {
       'admin': 'Admin',
       'owner': 'Owner',
-      'ai-training': 'AI Training',
+      'agent-management': 'Agent Management',
       'item-management': 'Item Management',
       'call-summary': 'Call Summary',
       'order-list': 'Order List',

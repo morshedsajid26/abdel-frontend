@@ -20,16 +20,14 @@ export const useLoginMutation = () => {
 
       Cookies.set("Access-Token", accessToken, { expires: 7, path: '/' });
 
-      // Normalize role for routing
-      const userRole = user.role === "SYSTEM_OWNER" ? "admin" : user.role.toLowerCase() || "admin";
-      Cookies.set("role", userRole, { expires: 7, path: '/' });
+      Cookies.set("role", user.role, { expires: 7, path: '/' });
 
       localStorage.setItem("user", JSON.stringify(user));
       setUser(user);
 
       toast.success(data.message || "Login successful!");
 
-      if (userRole === "admin") {
+      if (user.role === "SYSTEM_OWNER") {
         navigate("/admin/dashboard");
       } else {
         navigate("/owner/dashboard");

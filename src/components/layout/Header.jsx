@@ -12,7 +12,7 @@ import Cookies from "js-cookie";
 export default function Header({ onMenuClick }) {
   const [openDropdown, setOpenDropdown] = useState(false);
   const { logOutUser } = useAuth();
-  const role = Cookies.get("role") || "owner";
+  const role = Cookies.get("role");
 
   return (
     <header className="bg-[#fbfaf6] flex items-center px-4 md:px-6 py-3.5 relative gap-2 sm:gap-4">
@@ -73,7 +73,7 @@ export default function Header({ onMenuClick }) {
             {/* Dropdown */}
             {openDropdown && (
               <div className="absolute w-48 right-0 mt-3 p-2 bg-[#fbfaf6] rounded-lg shadow-xl border border-[#e6e4df] z-50">
-                <Link to={role === "admin" ? "/admin/settings" : "/owner/settings"} onClick={() => setOpenDropdown(false)}>
+                <Link to={role === "SYSTEM_OWNER" ? "/admin/settings" : "/owner/settings"} onClick={() => setOpenDropdown(false)}>
                   <button className="flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-[#0e1217] hover:bg-[#e8ecea] hover:text-[#205943] transition cursor-pointer">
                     <Icon icon="material-symbols:settings" width="20" />
                     <span className="font-montserrat text-sm font-medium">Settings</span>

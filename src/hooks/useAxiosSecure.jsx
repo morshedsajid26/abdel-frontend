@@ -5,7 +5,10 @@ import Cookies from "js-cookie";
 
 
 const AxiosSecure = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL || 'https://test13.fireai.agency/api'
+    baseURL: import.meta.env.VITE_API_BASE_URL || 'https://test13.fireai.agency/api',
+    headers: {
+      "ngrok-skip-browser-warning": "69420"
+    }
 })
 
 const useAxiosSecure = () => {
@@ -26,7 +29,7 @@ const useAxiosSecure = () => {
         return response;
     }, async function (error) {
 
-        const status = error.response.status;
+        const status = error.response?.status;
         if(status === 401 || status === 403){
             await logOutUser();
             navigate('/login')

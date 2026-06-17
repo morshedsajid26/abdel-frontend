@@ -18,11 +18,11 @@ export default function Sidebar({ isOpen, onClose }) {
   
 
   
-  const role = Cookies.get("role") || "owner"; 
+  const role = Cookies.get("role"); 
 
   const ownerNavLinks = [
     { name: "Dashboard", path: "/owner/dashboard", icon: "lucide:layout-dashboard" },
-    { name: "AI Training", path: "/owner/ai-training", icon: "lucide:bot" },
+    { name: "Agent Management", path: "/owner/agent-management", icon: "lucide:bot" },
     { name: "Test Call Window", path: "/owner/test-voice", icon: "lucide:phone-call" },
     { name: "Call Summary", path: "/owner/call-summary", icon: "lucide:file-text" },
     { name: "Order list", path: "/owner/order-list", icon: "lucide:list-checks" },
@@ -39,7 +39,7 @@ export default function Sidebar({ isOpen, onClose }) {
     { name: "Settings", path: "/admin/settings", icon: "lucide:settings" },
   ];
 
-  const navLinks = role === "admin" ? adminNavLinks : ownerNavLinks;
+  const navLinks = role === "SYSTEM_OWNER" ? adminNavLinks : ownerNavLinks;
 
   return (
     <>
