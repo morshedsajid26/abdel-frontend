@@ -6,27 +6,34 @@ import Table from "@/components/Table";
 import toast from 'react-hot-toast';
 
 import React, { useState } from "react";
-import { useGetTelephony, useAddTelephony, useUpdateTelephony, useDeleteTelephony } from "../../hooks/useTelephony";
+import { useGetTelephony, useAddTelephony, useUpdateTelephony, useDeleteTelephony, useGetUnconnectedAgents } from "../../hooks/useTelephony";
+import { useGetTenants } from "../../hooks/useTenants";
 
 const Telephony = () => {
   const { data: telephonyData = [], isLoading, isError, error } = useGetTelephony();
   const addMutation = useAddTelephony();
   const updateMutation = useUpdateTelephony();
   const deleteMutation = useDeleteTelephony();
+  const { data: tenants = [] } = useGetTenants();
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [deletingNumberId, setDeletingNumberId] = useState(null);
   const [editingNumber, setEditingNumber] = useState(null);
-  const [newNumber, setNewNumber] = useState({ twilioNumber: "", managerNumber: "", vapiAgentId: "" });
+  const [newNumber, setNewNumber] = useState({ twilioNumber: "", managerNumber: "", vapiAgentId: "", businessId: "" });
+
+  const { data: unconnectedAgents = [], isFetching: isFetchingAgents } = useGetUnconnectedAgents(newNumber.businessId);
+
+  const selectedBusinessName = tenants.find(t => t.id === newNumber.businessId)?.name || "";
+  const selectedAgentName = unconnectedAgents.find(a => (a.vapiAgentId || a.agentId || a.id) === newNumber.vapiAgentId)?.agentName || unconnectedAgents.find(a => (a.vapiAgentId || a.agentId || a.id) === newNumber.vapiAgentId)?.name || "";
 
   const handleAddNumber = () => {
-    if (newNumber.twilioNumber && newNumber.managerNumber && newNumber.vapiAgentId) {
+    if (newNumber.twilioNumber && newNumber.managerNumber && newNumber.vapiAgentId && newNumber.businessId) {
       addMutation.mutate(newNumber, {
         onSuccess: () => {
           setIsAddModalOpen(false);
-          setNewNumber({ twilioNumber: "", managerNumber: "", vapiAgentId: "" });
+          setNewNumber({ twilioNumber: "", managerNumber: "", vapiAgentId: "", businessId: "" });
         }
       });
     } else {
@@ -174,6 +181,33 @@ const Telephony = () => {
             <p className="text-[#9fa5ac] text-[13px] mb-8">Import Vapi Number</p>
 
             <div className="space-y-6">
+              <Dropdown
+                label="Business Name"
+                placeholder="Select Business"
+                options={tenants.map(t => t.name)}
+                value={selectedBusinessName}
+                onSelect={(val) => {
+                  const selectedTenant = tenants.find(t => t.name === val);
+                  setNewNumber({...newNumber, businessId: selectedTenant?.id || "", vapiAgentId: ""});
+                }}
+                labelClass="!text-[#0e1217] !text-[13px] !mb-1 !font-medium"
+                inputClass="!bg-[#F5F5F5] !border-none !text-[#111] !rounded-xl !py-3.5 !px-4 !font-medium !text-sm"
+              />
+
+              <Dropdown
+                label="Agent Name"
+                placeholder={isFetchingAgents ? "Loading agents..." : "Select Unconnected Agent"}
+                options={unconnectedAgents.map(a => a.agentName || a.name || "Unknown Agent")}
+                value={selectedAgentName || ""}
+                onSelect={(val) => {
+                  const selectedAgent = unconnectedAgents.find(a => (a.agentName || a.name) === val);
+                  setNewNumber({...newNumber, vapiAgentId: selectedAgent?.vapiAgentId || selectedAgent?.agentId || selectedAgent?.id || ""});
+                }}
+                disabled={!newNumber.businessId || unconnectedAgents.length === 0}
+                labelClass="!text-[#0e1217] !text-[13px] !mb-1 !font-medium"
+                inputClass="!bg-[#F5F5F5] !border-none !text-[#111] !rounded-xl !py-3.5 !px-4 !font-medium !text-sm disabled:opacity-60"
+              />
+
               <InputField
                 label="Twilio Number"
                 placeholder="+12345678"
@@ -188,15 +222,6 @@ const Telephony = () => {
                 placeholder="+1235489"
                 value={newNumber.managerNumber}
                 onChange={(e) => setNewNumber({...newNumber, managerNumber: e.target.value})}
-                labelClass="!text-[#0e1217] !text-[13px] !mb-1 !font-medium"
-                inputClass="!bg-[#F5F5F5] !border-none !text-[#111] !rounded-xl !py-3.5 !px-4 !font-medium !text-sm"
-              />
-
-              <InputField
-                label="Vapi Agent ID"
-                placeholder="05a89c6c-ed2c-4ec2-b5be-73aed6b7ac23"
-                value={newNumber.vapiAgentId}
-                onChange={(e) => setNewNumber({...newNumber, vapiAgentId: e.target.value})}
                 labelClass="!text-[#0e1217] !text-[13px] !mb-1 !font-medium"
                 inputClass="!bg-[#F5F5F5] !border-none !text-[#111] !rounded-xl !py-3.5 !px-4 !font-medium !text-sm"
               />

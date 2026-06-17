@@ -61,6 +61,24 @@ export const useUpdateTenant = () => {
   });
 };
 
+export const useUpdateTenantStatus = () => {
+  const axiosInstance = useAxios();
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async ({ id, name, status }) => {
+      const { data } = await axiosInstance.patch(`/system-owner/tenants/${id}`, { name, status });
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['tenants'] });
+      toast.success("Tenant status updated successfully");
+    },
+    onError: (error) => {
+      toast.error(error.response?.data?.message || "Failed to update tenant status");
+    }
+  });
+};
+
 export const useDeleteTenant = () => {
   const axiosInstance = useAxios();
   const queryClient = useQueryClient();

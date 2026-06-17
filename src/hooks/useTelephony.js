@@ -13,6 +13,19 @@ export const useGetTelephony = () => {
   });
 };
 
+export const useGetUnconnectedAgents = (businessId) => {
+  const axiosInstance = useAxios();
+  return useQuery({
+    queryKey: ['unconnected-agents', businessId],
+    queryFn: async () => {
+      if (!businessId) return [];
+      const { data } = await axiosInstance.get(`/system-owner/telephony/unconnected-agents/${businessId}`);
+      return data.data || [];
+    },
+    enabled: !!businessId,
+  });
+};
+
 export const useAddTelephony = () => {
   const axiosInstance = useAxios();
   const queryClient = useQueryClient();

@@ -7,12 +7,13 @@ import Dropdown from '../../components/Dropdown';
 import Password from '../../components/Password';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { useGetTenants, useAddTenant, useUpdateTenant, useDeleteTenant } from '../../hooks/useTenants';
+import { useGetTenants, useAddTenant, useUpdateTenant, useUpdateTenantStatus, useDeleteTenant } from '../../hooks/useTenants';
 
 const TenantManagement = () => {
   const { data: tenants = [], isLoading, isError, error } = useGetTenants();
   const addMutation = useAddTenant();
   const updateMutation = useUpdateTenant();
+  const updateStatusMutation = useUpdateTenantStatus();
   const deleteMutation = useDeleteTenant();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingTenant, setEditingTenant] = useState(null);
@@ -76,12 +77,13 @@ const TenantManagement = () => {
     }
   };
 
-  const toggleTenantStatus = (id, currentStatus) => {
+  const toggleTenantStatus = (id, currentStatus, name) => {
     const status = currentStatus?.toLowerCase();
     if (status === "expired") return; 
 
-    updateMutation.mutate({ 
+    updateStatusMutation.mutate({ 
       id, 
+      name,
       status: status === "active" ? "suspended" : "active" 
     });
   };
@@ -155,8 +157,8 @@ const TenantManagement = () => {
             </button>
             
             <button 
-              onClick={() => toggleTenantStatus(row.id, row.status)}
-              disabled={isExpired}
+              onClick={() => toggleTenantStatus(row.id, row.status, row.name)}
+              disabled={isExpired || updateStatusMutation.isPending}
               className="w-5 flex items-center justify-center transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               title={isActive ? "Suspend Tenant" : "Activate Tenant"}
             >
@@ -165,11 +167,6 @@ const TenantManagement = () => {
               ) : (
                 <Icon icon="lucide:user-check" className="text-lg text-[#22C55E] hover:text-green-400" />
               )}
-            </button>
-            <button 
-              onClick={() => handleDeleteClick(row.id)}
-              className="text-[#EA4335] hover:text-red-400 transition-colors" title="Delete">
-              <Icon icon="lucide:trash-2" className="text-lg" />
             </button>
           </div>
         );
