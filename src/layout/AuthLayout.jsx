@@ -15,8 +15,8 @@ export default function AuthLayout() {
   }
 
   if (user) {
-    if (role === "SYSTEM_OWNER") return <Navigate to="/admin/dashboard" replace />;
-    return <Navigate to="/owner/dashboard" replace />;
+    if (role === "SYSTEM_OWNER") return <Navigate to="/admin/tenant-management" replace />;
+    return <Navigate to="/owner/agent-management" replace />;
   }
 
   return (

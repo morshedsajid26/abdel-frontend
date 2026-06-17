@@ -21,22 +21,22 @@ export default function Sidebar({ isOpen, onClose }) {
   const role = Cookies.get("role"); 
 
   const ownerNavLinks = [
-    { name: "Dashboard", path: "/owner/dashboard", icon: "lucide:layout-dashboard" },
+    // { name: "Dashboard", path: "/owner/dashboard", icon: "lucide:layout-dashboard" },
     { name: "Agent Management", path: "/owner/agent-management", icon: "lucide:bot" },
     { name: "Test Call Window", path: "/owner/test-voice", icon: "lucide:phone-call" },
     { name: "Call Summary", path: "/owner/call-summary", icon: "lucide:file-text" },
     { name: "Order list", path: "/owner/order-list", icon: "lucide:list-checks" },
-    { name: "Item Management", path: "/owner/item-management", icon: "lucide:monitor-cog" },
-    { name: "Settings", path: "/owner/settings", icon: "lucide:settings" },
+    // { name: "Item Management", path: "/owner/item-management", icon: "lucide:monitor-cog" },
+    // { name: "Settings", path: "/owner/settings", icon: "lucide:settings" },
   ];
 
   const adminNavLinks = [
-    { name: "Dashboard", path: "/admin/dashboard", icon: "lucide:layout-grid" },
+    // { name: "Dashboard", path: "/admin/dashboard", icon: "lucide:layout-grid" },
     { name: "Tenants", path: "/admin/tenant-management", icon: "lucide:users" },
     { name: "Telephony", path: "/admin/telephony-integration", icon: "lucide:phone" },
     { name: "Subscriptions & Billing", path: "/admin/subscriptions-billing", icon: "lucide:credit-card" },
-    { name: "API Keys", path: "/admin/api-keys", icon: "lucide:key" },
-    { name: "Settings", path: "/admin/settings", icon: "lucide:settings" },
+    // { name: "API Keys", path: "/admin/api-keys", icon: "lucide:key" },
+    // { name: "Settings", path: "/admin/settings", icon: "lucide:settings" },
   ];
 
   const navLinks = role === "SYSTEM_OWNER" ? adminNavLinks : ownerNavLinks;
@@ -54,8 +54,8 @@ export default function Sidebar({ isOpen, onClose }) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-30 w-64 bg-[#ffffff] text-[#0e1217]
-        border-r border-[#e6e4df]
+        className={`fixed inset-y-0 left-0 z-30 w-64 bg-[#141B21] text-white
+        border-r border-[#1d2733]
         transform transition-transform duration-300 
         ${isOpen ? "translate-x-0" : "-translate-x-full"}
         2xl:static 2xl:translate-x-0`}
@@ -63,15 +63,15 @@ export default function Sidebar({ isOpen, onClose }) {
         {/* Mobile Close */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-40 p-2 rounded-md bg-[#205943] text-white 2xl:hidden cursor-pointer"
+          className="absolute top-4 right-4 z-40 p-2 rounded-md bg-[#1d2733] text-white hover:bg-[#2a3441] transition-colors 2xl:hidden cursor-pointer"
         >
           <FiX size={20} />
         </button>
 
         <div className="flex h-full flex-col">
           {/* Header */}
-          <div className="px-6 py-6 flex items-center gap-2 text-[#0e1217]">
-            <Icon icon="lucide:audio-lines" className="text-2xl text-[#205943]" />
+          <div className="px-6 py-6 flex items-center gap-2 text-white">
+            <Icon icon="lucide:audio-lines" className="text-2xl text-[#419977]" />
             <span className="text-xl font-bold tracking-wider">FOODVOICE</span>
           </div>
 
@@ -85,12 +85,12 @@ export default function Sidebar({ isOpen, onClose }) {
                 className={`flex  items-center gap-4 px-2 py-3.5 rounded-xl transition-all border border-l-[4px]
                   ${
                     isActivePath(item.path)
-                      ? "border-[#205943]/30 border-l-[#419977] bg-[#e8ecea] text-[#0e1217]"
-                      : "border-transparent border-l-transparent text-[#50565c] hover:bg-[#e8ecea] hover:text-[#0e1217]"
+                      ? "border-[#419977]/30 border-l-[#419977] bg-[#1d2733] text-white"
+                      : "border-transparent border-l-transparent text-[#9fa5ac] hover:bg-[#1d2733] hover:text-white"
                   }`}
               >
                 <Icon icon={item.icon} width="24" className="text-current" />
-                <span className="text-sm ">{item.name}</span>
+                <span className="text-sm font-medium">{item.name}</span>
               </NavLink>
             ))}
           </nav>

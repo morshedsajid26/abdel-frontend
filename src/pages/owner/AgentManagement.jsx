@@ -167,7 +167,7 @@ const AgentManagement = () => {
         <Breadcrumb text="Manage your AI agents here" />
         <button 
           onClick={handleCreateAgent}
-          className="flex items-center gap-2 bg-[#205943] hover:bg-[#184a36] text-white px-5 py-2.5 rounded-[10px] text-sm font-medium transition-colors shadow-md whitespace-nowrap"
+          className="flex items-center gap-2 bg-[#184a36] hover:bg-[#184a36]/90 text-white px-5 py-2.5 rounded-[10px] text-sm font-medium transition-colors shadow-md whitespace-nowrap"
         >
           <Plus className="w-4 h-4" />
           Create Agent
