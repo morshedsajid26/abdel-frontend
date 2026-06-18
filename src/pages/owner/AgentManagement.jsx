@@ -99,7 +99,7 @@ const AgentManagement = () => {
       width: '10%',
       sortable: false,
       render: (row) => (
-        <div className="flex gap-2 justify-center">
+        <div className="flex gap-2 justify-start">
           <button 
             onClick={() => handleDeleteClick(row.id)}
             disabled={deleteMutation.isLoading && agentToDelete === row.id}
