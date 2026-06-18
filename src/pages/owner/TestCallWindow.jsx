@@ -22,6 +22,7 @@ const TestCallWindow = () => {
   const timerRef = useRef(null);
   const chatScrollRef = useRef(null);
   const vapiRef = useRef(null);
+  const listenersRegisteredRef = useRef(false);
 
   if (!vapiRef.current) {
     vapiRef.current = new Vapi(import.meta.env.VITE_VAPI_PUBLIC_KEY || "a78bff84-96a1-4416-babd-1c737d6fbc0a");
@@ -40,54 +41,68 @@ const TestCallWindow = () => {
   const agents = responseData?.data || [];
 
   useEffect(() => {
-    // Vapi Event Listeners
-    vapi.on('call-start', () => {
+    const onCallStart = () => {
       setIsCalling(true);
       setCallStatus('connected');
       setMessages([]);
       
-      // Start duration timer
       if (timerRef.current) clearInterval(timerRef.current);
       setCallDuration(0);
       timerRef.current = setInterval(() => setCallDuration(prev => prev + 1), 1000);
-    });
+    };
 
-    vapi.on('call-end', () => {
+    const onCallEnd = () => {
       setIsCalling(false);
       setCallStatus('idle');
       setVolume(0);
       setAiSpeaking(false);
       if (timerRef.current) clearInterval(timerRef.current);
-    });
+    };
 
-    vapi.on('volume-level', (level) => {
-      // Vapi returns volume from 0 to 1
+    const onVolumeLevel = (level) => {
       setVolume(level);
-    });
+    };
 
-    vapi.on('message', (message) => {
+    const onMessage = (message) => {
       if (message.type === 'bot-message') {
          setAiSpeaking(true);
       }
       if (message.type === 'transcript' && message.transcriptType === 'final') {
-        setMessages(prev => [...prev, {
-          id: Date.now() + Math.random(),
-          role: message.role, // 'user' or 'assistant'
-          text: message.transcript
-        }]);
-      }
-    });
+        setMessages(prev => {
+          // Strict deduplication check (ignores trailing spaces)
+          const lastMsg = prev[prev.length - 1];
+          if (lastMsg && lastMsg.text.trim() === message.transcript.trim() && lastMsg.role === message.role) {
+            return prev; // Ignore duplicate
+          }
+          
+          // Append to previous message if same role, to avoid broken sentence bubbles
+          if (lastMsg && lastMsg.role === message.role) {
+            const newPrev = [...prev];
+            newPrev[newPrev.length - 1] = {
+              ...lastMsg,
+              text: lastMsg.text.trim() + " " + message.transcript.trim()
+            };
+            return newPrev;
+          }
 
-    vapi.on('error', (e) => {
+          return [...prev, {
+            id: Date.now() + Math.random(),
+            role: message.role, // 'user' or 'assistant'
+            text: message.transcript.trim()
+          }];
+        });
+      }
+    };
+
+    const onError = (e) => {
       console.error("Vapi Error:", e);
       let errorMsg = "Unknown error";
       if (e?.error?.message?.message) errorMsg = e.error.message.message;
       else if (e?.error?.message) errorMsg = JSON.stringify(e.error.message);
       else if (typeof e === 'string') errorMsg = e;
       
-      // If it's the "Couldn't Get Assistant" error, make the message very clear for the user
       if (errorMsg.includes("Couldn't Get Assistant") || errorMsg.includes("Bad Request")) {
-        toast.error(`Call failed: Vapi doesn't recognize this Agent ID. Make sure your backend returns a valid 'vapiAgentId'.`, { duration: 6000 });
+        toast.error(`Call failed: Vapi doesn't recognize this Agent ID. Make sure your backend returns a valid 'vapiAssistantId'.`, { duration: 6000 });
       } else {
         toast.error(`Call failed: ${errorMsg}`);
       }
@@ -95,11 +110,21 @@ const TestCallWindow = () => {
       setIsCalling(false);
       setCallStatus('idle');
       if (timerRef.current) clearInterval(timerRef.current);
-    });
+    };
+
+    // Register Event Listeners exactly once
+    if (!listenersRegisteredRef.current) {
+      listenersRegisteredRef.current = true;
+      vapi.on('call-start', onCallStart);
+      vapi.on('call-end', onCallEnd);
+      vapi.on('volume-level', onVolumeLevel);
+      vapi.on('message', onMessage);
+      vapi.on('error', onError);
+    }
 
     return () => {
-      vapi.stop();
-      vapi.removeAllListeners();
+      // In Strict Mode, we don't aggressively remove listeners because Vapi SDK sometimes fails to re-attach them.
+      // The `listenersRegisteredRef` ensures they are only attached once in the entire lifecycle.
       if (timerRef.current) clearInterval(timerRef.current);
     };
   }, []);
