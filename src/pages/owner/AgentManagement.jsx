@@ -67,8 +67,8 @@ const AgentManagement = () => {
   });
 
   const columns = [
-    { key: 'agentName', Title: 'Agent Name', width: '15%' },
     { key: 'restaurantName', Title: 'Restaurant', width: '15%', render: (row) => row.restaurantName || row.restaurantId || 'N/A' },
+    { key: 'agentName', Title: 'Agent Name', width: '15%' },
     { key: 'twilioNumber', Title: 'Twilio Number', width: '15%', render: (row) => row.twilioNumber || 'N/A' },
     { 
       key: 'prompt', 

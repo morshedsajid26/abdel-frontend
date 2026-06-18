@@ -91,14 +91,21 @@ const TenantManagement = () => {
     {
       key: "name",
       Title: "Tenant Name",
-      width: "25%",
+      width: "20%",
       sortable: true,
       render: (row) => <div className="text-left text-[#0e1217]">{row.name}</div>
     },
     {
+      key: "email",
+      Title: "Email",
+      width: "20%",
+      sortable: true,
+      render: (row) => <div className="text-left text-[#0e1217] max-w-[200px] truncate" title={row.email}>{row.email || 'N/A'}</div>
+    },
+    {
       key: "plan",
       Title: "Plan",
-      width: "20%",
+      width: "15%",
       sortable: true,
       render: (row) => <div className="text-left text-[#0e1217]">{row.plan}</div>
     },
@@ -126,7 +133,7 @@ const TenantManagement = () => {
     {
       key: "expiry",
       Title: "Expiry Date",
-      width: "20%",
+      width: "15%",
       sortable: true,
       render: (row) => {
         const date = row.expiry_date ? new Date(row.expiry_date).toLocaleDateString() : 'N/A';
@@ -136,7 +143,7 @@ const TenantManagement = () => {
     {
       key: "actions",
       Title: "Action",
-      width: "20%",
+      width: "15%",
       sortable: false,
       render: (row) => {
         return (

@@ -37,7 +37,7 @@ export default function Header({ onMenuClick }) {
         </div> */}
         <div className="flex items-center gap-2 sm:gap-4 min-w-0">
           <h3 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-[#0e1217] truncate">
-            Welcome to foodvoice
+            Welcome to FoodVoice.ai
           </h3>
         </div>
 
@@ -45,9 +45,9 @@ export default function Header({ onMenuClick }) {
 
         <div className="flex items-center ml-auto gap-2 sm:gap-4 shrink-0">
           {/* Notification Button */}
-          <button className="flex items-center justify-center w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-[#ffffff] hover:bg-[#ffffff] transition-colors shrink-0">
+          {/* <button className="flex items-center justify-center w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-[#ffffff] hover:bg-[#ffffff] transition-colors shrink-0">
             <IoIosNotificationsOutline className="w-6 h-6 sm:w-6 sm:h-6 text-[#0e1217]" />
-          </button>
+          </button> */}
 
           {/* Language Selector */}
           {/* <button className="flex items-center gap-2 px-3 h-10 rounded-full bg-[#ffffff] hover:bg-[#ffffff] transition-colors text-[#0e1217]">
@@ -63,9 +63,9 @@ export default function Header({ onMenuClick }) {
               onClick={() => setOpenDropdown(!openDropdown)}
             >
               <Image
-                src="/logo.png"
+                src="/foodvoice-ai.png"
                 alt="User Avatar"
-                className="w-10 h-10 sm:w-10 sm:h-10 rounded-full object-cover"
+                className="w-15 h-15 sm:w-12 sm:h-12 rounded-full object-cover"
               />
               <span className="absolute bottom-0 right-0 w-3 h-3 sm:w-3.5 sm:h-3.5 bg-[#4ADE80] border-2 border-[#e6e4df] rounded-full"></span>
             </div>

@@ -71,8 +71,8 @@ export default function Sidebar({ isOpen, onClose }) {
         <div className="flex h-full flex-col">
           {/* Header */}
           <div className="px-6 py-6 flex items-center gap-2 text-white">
-            <Icon icon="lucide:audio-lines" className="text-2xl text-[#419977]" />
-            <span className="text-xl font-bold tracking-wider">FOODVOICE</span>
+            <img src="/foodvoice-ai.png" alt="logo" className="w-25 h-11" />
+            <span className="text-xl font-bold tracking-wider">FOODVOICE.AI</span>
           </div>
 
           {/* Navigation */}
