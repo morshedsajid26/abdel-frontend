@@ -143,27 +143,28 @@ const Telephony = () => {
         </div>
       </div>
 
-        <div className="bg-[#ffffff] rounded-2xl border border-[#e6e4df] overflow-hidden w-full relative">
+        <div className="bg-[#ffffff] rounded-2xl border border-[#e6e4df] overflow-hidden w-full">
           {isLoading ? (
             <div className="flex items-center justify-center p-12 text-[#9fa5ac]">
               <span className="animate-pulse">Loading telephony...</span>
             </div>
           ) : isError ? (
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-[#EA4335] px-4 text-center">
+            <div className="flex flex-col items-center justify-center p-12 text-[#EA4335] px-4 text-center">
               Failed to load telephony data. <br/>
               {error?.response?.data?.message || error?.message || 'Unknown error'}
             </div>
           ) : telephonyData.length === 0 ? (
-            <div className="absolute inset-0 flex items-center justify-center text-[#9fa5ac]">
+            <div className="flex items-center justify-center p-12 text-[#9fa5ac]">
               No telephony data found
             </div>
-          ) : null}
-          <Table 
-            TableHeads={columns} 
-            TableRows={telephonyData} 
-            headClass="[&>div]:justify-start border-none text-left whitespace-nowrap" 
-            tableClass="border-none" 
-          />
+          ) : (
+            <Table 
+              TableHeads={columns} 
+              TableRows={telephonyData} 
+              headClass="[&>div]:justify-start border-none text-left whitespace-nowrap bg-[#f8f9fa]" 
+              tableClass="border-none" 
+            />
+          )}
         </div>
 
       {/* Add Number Modal */}

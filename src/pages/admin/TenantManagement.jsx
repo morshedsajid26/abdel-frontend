@@ -175,22 +175,28 @@ const TenantManagement = () => {
                 Add Tenant
             </button>
         </div>
-      <div className="bg-[#ffffff] rounded-2xl border border-[#e6e4df] overflow-hidden w-full relative">
+      <div className="bg-[#ffffff] rounded-2xl border border-[#e6e4df] overflow-hidden w-full">
         {isLoading ? (
           <div className="flex items-center justify-center p-12 text-[#9fa5ac]">
             <span className="animate-pulse">Loading tenants...</span>
           </div>
         ) : isError ? (
-          <div className="absolute inset-0 flex items-center justify-center text-[#EA4335] px-4 text-center">
-            Failed to load tenants. {error?.response?.data?.message || error?.message || 'Unknown error'}
+          <div className="flex flex-col items-center justify-center p-12 text-[#EA4335] px-4 text-center">
+            Failed to load tenants. <br/>
+            {error?.response?.data?.message || error?.message || 'Unknown error'}
           </div>
-        ) : null}
-        <Table 
-          TableHeads={columns} 
-          TableRows={tenants} 
-          headClass="[&>div]:justify-start border-none text-left whitespace-nowrap" 
-          tableClass="border-none" 
-        />
+        ) : tenants.length === 0 ? (
+          <div className="flex items-center justify-center p-12 text-[#9fa5ac]">
+            No tenants found.
+          </div>
+        ) : (
+          <Table 
+            TableHeads={columns} 
+            TableRows={tenants} 
+            headClass="[&>div]:justify-start border-none text-left whitespace-nowrap bg-[#f8f9fa]" 
+            tableClass="border-none" 
+          />
+        )}
       </div>
 
       {/* Edit Tenant Modal */}
