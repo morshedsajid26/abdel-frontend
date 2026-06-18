@@ -109,12 +109,12 @@ const Telephony = () => {
       width: "10%",
       sortable: false,
       render: (row) => (
-        <div className="flex items-center justify-start gap-4">
-          <button 
+        <div className="flex items-center justify-cente gap-4">
+          {/* <button 
             onClick={() => handleEditClick(row)}
             className="text-[#9fa5ac] hover:text-[#0e1217] transition-colors" title="Edit">
             <Icon icon="lucide:square-pen" className="text-lg" />
-          </button>
+          </button> */}
           <button 
             onClick={() => handleDeleteClick(row.id)}
             className="text-[#EA4335] hover:text-red-400 transition-colors" title="Delete">
