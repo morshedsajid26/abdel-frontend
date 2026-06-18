@@ -25,8 +25,9 @@ export default function AuthLayout() {
       
       {/* Logo */}
         <div className="relative z-10 flex items-center gap-2 text-[#0e1217] mb-6">
-          <Icon icon="lucide:audio-lines" className="text-2xl text-[#205943]" />
-          <span className="text-xl font-bold tracking-wider">FOODVOICE</span>
+          {/* <Icon icon="lucide:audio-lines" className="text-2xl text-[#205943]" /> */}
+          <img src="/foodvoice-ai.png" alt="logo" className="w-12 h-12" />
+          <span className="text-xl font-bold tracking-wider">FOODVOICE.AI</span>
         </div>
 
      
