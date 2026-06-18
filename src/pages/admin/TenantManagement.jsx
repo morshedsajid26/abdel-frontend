@@ -37,11 +37,10 @@ const TenantManagement = () => {
 
   const handleSaveEdit = () => {
     if (editingTenant) {
-      updateMutation.mutate({ 
+      updateStatusMutation.mutate({ 
         id: editingTenant.id, 
         name: editingTenant.name, 
-        plan: editingTenant.plan, 
-        email: editingTenant.email 
+        status: editingTenant.status 
       }, {
         onSuccess: () => setIsEditModalOpen(false)
       });
@@ -140,9 +139,6 @@ const TenantManagement = () => {
       width: "20%",
       sortable: false,
       render: (row) => {
-        const isActive = row.status?.toLowerCase() === "active";
-        const isExpired = row.status?.toLowerCase() === "expired";
-
         return (
           <div className="flex items-center justify-start gap-8">
             <Link to={`/admin/tenant-management/view/${row.id}`}>
@@ -154,19 +150,6 @@ const TenantManagement = () => {
               onClick={() => handleEditClick(row)}
               className="text-[#9fa5ac] hover:text-[#0e1217] transition-colors" title="Edit">
               <Icon icon="lucide:square-pen" className="text-lg" />
-            </button>
-            
-            <button 
-              onClick={() => toggleTenantStatus(row.id, row.status, row.name)}
-              disabled={isExpired || updateStatusMutation.isPending}
-              className="w-5 flex items-center justify-center transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              title={isActive ? "Suspend Tenant" : "Activate Tenant"}
-            >
-              {isActive ? (
-                <Icon icon="lucide:user-x" className="text-lg text-[#EA4335] hover:text-[#EA4335]" />
-              ) : (
-                <Icon icon="lucide:user-check" className="text-lg text-[#22C55E] hover:text-green-400" />
-              )}
             </button>
           </div>
         );
@@ -232,17 +215,18 @@ const TenantManagement = () => {
                 value={editingTenant?.email || `${(editingTenant?.name || "").toLowerCase().replace(/\s+/g, '')}@test.com`}
                 onChange={(e) => setEditingTenant({...editingTenant, email: e.target.value})}
                 labelClass="!text-[#0e1217] !text-[13px] !mb-1 !font-medium"
-                inputClass="!bg-[#F5F5F5] !border-none !text-[#111] !rounded-xl !py-3.5 !px-4 !font-medium !text-sm"
+                inputClass="!bg-[#F5F5F5] !border-none !text-[#111] !rounded-xl !py-3.5 !px-4 !font-medium !text-sm !opacity-60 !cursor-not-allowed"
+                disabled={true}
               />
 
               <Dropdown
-                label="Plan"
-                options={["Classic", "Pro"]}
-                value={editingTenant?.plan || "Classic"}
-                onSelect={(val) => setEditingTenant({...editingTenant, plan: val})}
+                label="Status"
+                options={["active", "suspended", "expired"]}
+                value={editingTenant?.status || "active"}
+                onSelect={(val) => setEditingTenant({...editingTenant, status: val})}
                 labelClass="!text-[#0e1217] !text-[13px] !mb-1 !font-medium"
-                inputClass="!bg-[#F5F5F5] !border-none !text-[#111] !rounded-xl !py-3.5 !px-4 !font-medium !text-sm"
-                optionClass="!bg-[#ffffff] !text-[#111]"
+                inputClass="!bg-[#F5F5F5] !border-none !text-[#111] !rounded-xl !py-3.5 !px-4 !font-medium !text-sm capitalize"
+                optionClass="!bg-[#ffffff] !text-[#111] capitalize"
                 icon="!text-[#9fa5ac]"
               />
             </div>
@@ -256,10 +240,10 @@ const TenantManagement = () => {
               </button>
               <button 
                 onClick={handleSaveEdit}
-                disabled={updateMutation.isPending}
+                disabled={updateStatusMutation.isPending}
                 className="bg-linear-to-t from-[#173623] via-[#0a170f] to-[#11291b] text-white px-8 py-2.5 rounded-full font-semibold border border-[#e6e4df] shadow-[0_0_20px_rgba(37,99,235,0.15)] hover:shadow-[0_0_25px_rgba(37,99,235,0.3)] transition-all text-sm flex items-center gap-2 disabled:opacity-50"
               >
-                {updateMutation.isPending && <Icon icon="lucide:loader-2" className="animate-spin" />}
+                {updateStatusMutation.isPending && <Icon icon="lucide:loader-2" className="animate-spin" />}
                 Save Changes
               </button>
             </div>
