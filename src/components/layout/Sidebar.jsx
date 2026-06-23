@@ -31,7 +31,7 @@ export default function Sidebar({ isOpen, onClose }) {
   ];
 
   const adminNavLinks = [
-    // { name: "Dashboard", path: "/admin/dashboard", icon: "lucide:layout-grid" },
+    { name: "Dashboard", path: "/admin/dashboard", icon: "lucide:layout-grid" },
     { name: "Tenants", path: "/admin/tenant-management", icon: "lucide:users" },
     { name: "Telephony", path: "/admin/telephony-integration", icon: "lucide:phone" },
     { name: "Subscriptions & Billing", path: "/admin/subscriptions-billing", icon: "lucide:credit-card" },
