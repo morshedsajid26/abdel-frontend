@@ -28,7 +28,7 @@ export const useLoginMutation = () => {
       toast.success(data.message || "Login successful!");
 
       if (user.role === "SYSTEM_OWNER") {
-        navigate("/admin/tenant-management");
+        navigate("/admin/dashboard");
       } else {
         navigate("/owner/agent-management");
       }

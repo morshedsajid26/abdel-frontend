@@ -25,10 +25,10 @@ export default function DashboardLayout() {
     return <Navigate to="/owner/agent-management" replace />;
   }
   if (location.pathname.startsWith('/admin') && role !== 'SYSTEM_OWNER') {
-    return <Navigate to="/admin/tenant-management" replace />;
+    return <Navigate to="/owner/agent-management" replace />;
   }
   if (location.pathname.startsWith('/owner') && role !== 'RESTAURANT_OWNER' && role !== 'SYSTEM_OWNER') { // if admin has access to owner? No, let's keep it strict or allow. Admin is admin.
-    return <Navigate to="/admin/tenant-management" replace />;
+    return <Navigate to="/admin/dashboard" replace />;
   }
 
   return (

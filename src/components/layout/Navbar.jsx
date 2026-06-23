@@ -26,7 +26,7 @@ const Navbar = () => {
   const { user } = useAuth();
   const role = Cookies.get("role") || user?.role;
   const isSystemOwner = role === "SYSTEM_OWNER";
-  const dashboardPath = isSystemOwner ? "/admin/tenant-management" : "/owner/agent-management";
+  const dashboardPath = isSystemOwner ? "/admin/dashboard" : "/owner/agent-management";
   const dashboardLabel = isSystemOwner ? "Admin" : "Business Owner";
 
   useEffect(() => {
