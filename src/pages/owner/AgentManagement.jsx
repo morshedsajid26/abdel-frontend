@@ -67,7 +67,7 @@ const AgentManagement = () => {
   });
 
   const columns = [
-    { key: 'restaurantName', Title: 'Restaurant', width: '15%', render: (row) => row.restaurantName || row.restaurantId || 'N/A' },
+    // { key: 'restaurantName', Title: 'Restaurant', width: '15%', render: (row) => row.restaurantName || row.restaurantId || 'N/A' },
     { key: 'agentName', Title: 'Agent Name', width: '15%' },
     { key: 'twilioNumber', Title: 'Twilio Number', width: '15%', render: (row) => row.twilioNumber || 'N/A' },
     { 
@@ -143,7 +143,9 @@ const AgentManagement = () => {
   };
 
   const handleFileChange = (e) => {
-    setFormData({ ...formData, files: e.target.files });
+    if (e.target.files && e.target.files.length > 0) {
+      setFormData({ ...formData, files: e.target.files });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -276,36 +278,50 @@ const AgentManagement = () => {
                     />
                   </div>
 
-                  {/* Multiple File Upload */}
+                  {/* Single File Upload */}
                   <div>
                     <label className="block text-sm font-medium text-[#0e1217] mb-2">
-                      Training Files
+                      Training File
                     </label>
                     <div className="relative">
-                      <input 
-                        type="file" 
-                        multiple
-                        onChange={handleFileChange}
-                        className="hidden"
-                        id="file-upload"
-                      />
-                      <label 
-                        htmlFor="file-upload"
-                        className="flex flex-col items-center justify-center w-full h-32 px-4 transition bg-white border-2 border-dashed border-[#e6e4df] rounded-xl appearance-none cursor-pointer hover:border-[#205943] hover:bg-[#fbfaf6] focus:outline-none"
-                      >
-                        <span className="flex items-center space-x-2 text-[#9fa5ac]">
-                          <Upload className="w-5 h-5" />
-                          <span className="font-medium text-[14px]">
-                            {formData.files && formData.files.length > 0 
-                              ? `${formData.files.length} file(s) selected` 
-                              : 'Click to select multiple files'
-                            }
-                          </span>
-                        </span>
-                      </label>
-                      {formData.files && formData.files.length > 0 && (
-                        <div className="mt-3 text-xs text-[#9fa5ac]">
-                          {Array.from(formData.files).map(f => f.name).join(', ')}
+                      {!(formData.files && formData.files.length > 0) ? (
+                        <>
+                          <input 
+                            type="file" 
+                            onChange={handleFileChange}
+                            className="hidden"
+                            id="file-upload"
+                          />
+                          <label 
+                            htmlFor="file-upload"
+                            className="flex flex-col items-center justify-center w-full h-32 px-4 transition bg-white border-2 border-dashed border-[#e6e4df] rounded-xl appearance-none cursor-pointer hover:border-[#205943] hover:bg-[#fbfaf6] focus:outline-none"
+                          >
+                            <span className="flex items-center space-x-2 text-[#9fa5ac]">
+                              <Upload className="w-5 h-5" />
+                              <span className="font-medium text-[14px]">
+                                Click to select a file
+                              </span>
+                            </span>
+                          </label>
+                        </>
+                      ) : (
+                        <div className="flex items-center justify-between p-4 border border-[#e6e4df] rounded-xl bg-[#fbfaf6]">
+                          <div className="flex items-center space-x-3 overflow-hidden">
+                            <div className="p-2 bg-white rounded-lg border border-[#e6e4df]">
+                              <Upload className="w-4 h-4 text-[#205943]" />
+                            </div>
+                            <span className="text-sm font-medium text-[#0e1217] truncate">
+                              {formData.files[0].name}
+                            </span>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => setFormData({ ...formData, files: null })}
+                            className="p-1.5 text-[#9fa5ac] hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                            title="Remove file"
+                          >
+                            <X className="w-4 h-4" />
+                          </button>
                         </div>
                       )}
                     </div>
