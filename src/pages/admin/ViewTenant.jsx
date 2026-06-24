@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Table from '../../components/Table';
 import { useGetTenant } from '../../hooks/useTenants';
+import TenantUsageChart from '../../components/TenantUsageChart';
 
 import { billingHistoryMock } from '../../data/mockData';
 
@@ -127,35 +128,75 @@ const ViewTenant = () => {
 
   return (
     <div className=" space-y-8">
-      {/* Header Section */}
-      <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-        <div className="space-y-3">
-          <h1 className="text-[#0e1217] text-2xl font-bold">{tenant.name}</h1>
-          <div className="flex flex-wrap items-center gap-4 text-[#9fa5ac] text-sm mt-1">
-            <div className="flex items-center gap-1.5" title="Email Address">
-              <Icon icon="lucide:mail" className="text-lg" />
-              <span>{tenant.email || "N/A"}</span>
+      <div className='grid  grid-cols-12 gap-10'>
+      {/* Header Section / Profile Information Card */}
+        <div className="bg-[#ffffff] rounded-2xl border border-[#e6e4df] p-6 shadow-sm relative overflow-hidden md:col-span-6 col-span-12">
+        {/* Decorative background element */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#205943]/10 to-transparent rounded-bl-[100px] pointer-events-none -mr-10 -mt-10"></div>
+        
+        <div className="relative z-10 flex flex-col md:flex-row md:items-start justify-between gap-6">
+          <div className="fle flex-col md:flex-row gap-6 items-start">
+            {/* Avatar / Initials */}
+            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#205943] to-[#184a36] text-white flex items-center justify-center text-3xl font-bold shadow-md flex-shrink-0">
+              {tenant.name ? tenant.name.charAt(0).toUpperCase() : 'T'}
             </div>
-            <div className="flex items-center gap-1.5" title="Join Date">
-              <Icon icon="lucide:calendar" className="text-lg" />
-              <span>Joined {joinedDateStr}</span>
-            </div>
-            <div className="flex items-center gap-1.5" title="Total AI Agents">
-              <Icon icon="lucide:bot" className="text-lg" />
-              <span>{tenant.agents?.length || tenant.total_agents || tenant.agents_count || tenant.agentCount || 0} Agents</span>
+            
+            <div className="space-y-4 mt-5">
+              <div>
+                <h1 className="text-[#0e1217] text-2xl font-bold tracking-tight">{tenant.name}</h1>
+                <p className="text-[#9fa5ac] text-sm mt-1">Tenant Profile</p>
+              </div>
+              
+              <div className="flex flex-col gap-3 text-[#0e1217] text-sm">
+                <div className="flex items-center gap-2" title="Email Address">
+                  <div className="p-1.5 bg-[#fbfaf6] rounded-md border border-[#e6e4df]">
+                    <Icon icon="lucide:mail" className="text-[16px] text-[#205943]" />
+                  </div>
+                  <span className="font-medium">{tenant.email || "N/A"}</span>
+                </div>
+                
+                <div className="flex items-center gap-2" title="Phone Number">
+                  <div className="p-1.5 bg-[#fbfaf6] rounded-md border border-[#e6e4df]">
+                    <Icon icon="lucide:phone" className="text-[16px] text-[#205943]" />
+                  </div>
+                  <span className="font-medium">{tenant.phone || "N/A"}</span>
+                </div>
+                
+                <div className="flex items-center gap-2" title="Join Date">
+                  <div className="p-1.5 bg-[#fbfaf6] rounded-md border border-[#e6e4df]">
+                    <Icon icon="lucide:calendar" className="text-[16px] text-[#205943]" />
+                  </div>
+                  <span className="font-medium">Joined {joinedDateStr}</span>
+                </div>
+                
+                <div className="flex items-center gap-2" title="Total AI Agents">
+                  <div className="p-1.5 bg-[#fbfaf6] rounded-md border border-[#e6e4df]">
+                    <Icon icon="lucide:bot" className="text-[16px] text-[#205943]" />
+                  </div>
+                  <span className="font-medium">{tenant.agents?.length || tenant.total_agents || tenant.agents_count || tenant.agentCount || 0} Active Agents</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div>
-          <span className={`inline-block px-4 py-1.5 text-xs font-semibold rounded-full capitalize ${
-            tenant.status?.toLowerCase() === "active" ? "bg-[#4285F4] text-white" : 
-            tenant.status?.toLowerCase() === "suspended" ? "bg-[#EA4335] text-white" : 
-            "bg-[#7A8293] text-white"
-          }`}>
-            {tenant.status}
-          </span>
+          <div className="flex flex-col items-end gap-2 md:mt-2">
+            <span className={`inline-flex items-center justify-center px-4 py-1.5 text-xs font-bold tracking-wide rounded-full uppercase shadow-sm ${
+              tenant.status?.toLowerCase() === "active" ? "bg-emerald-100 text-emerald-700 border border-emerald-200" : 
+              tenant.status?.toLowerCase() === "suspended" ? "bg-red-100 text-red-700 border border-red-200" : 
+              "bg-gray-100 text-gray-700 border border-gray-200"
+            }`}>
+              {tenant.status}
+            </span>
+          </div>
         </div>
+      </div>
+
+      <div className='md:col-span-6 col-span-12'>
+
+      {/* Usage Chart Component */}
+      <TenantUsageChart />
+
+      </div>
       </div>
 
       {/* Agents List Section */}
