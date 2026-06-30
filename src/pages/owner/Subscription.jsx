@@ -2,7 +2,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import React from "react";
 import BillingHistory from "./settings/BillingHistory";
 import Plan from "./Plan";
-import CurrentPlan from "./settings/CurrentPlan";
+import CurrentPlan from "./CurrentPlan";
 
 const Subscription = () => {
   return (
