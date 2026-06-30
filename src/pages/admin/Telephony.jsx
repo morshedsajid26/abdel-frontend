@@ -29,7 +29,7 @@ const Telephony = () => {
   const selectedAgentName = unconnectedAgents.find(a => (a.vapiAgentId || a.agentId || a.id) === newNumber.vapiAgentId)?.agentName || unconnectedAgents.find(a => (a.vapiAgentId || a.agentId || a.id) === newNumber.vapiAgentId)?.name || "";
 
   const handleAddNumber = () => {
-    if (newNumber.twilioNumber && newNumber.managerNumber && newNumber.vapiAgentId && newNumber.businessId) {
+    if (newNumber.twilioNumber && newNumber.vapiAgentId && newNumber.businessId) {
       addMutation.mutate(newNumber, {
         onSuccess: () => {
           setIsAddModalOpen(false);
@@ -52,7 +52,7 @@ const Telephony = () => {
       return;
     }
     updateMutation.mutate(
-      { id: editingNumber.id, data: { twilioNumber: editingNumber.twilioNumber, managerNumber: editingNumber.managerNumber } },
+      { id: editingNumber.id, data: { twilioNumber: editingNumber.twilioNumber } },
       { onSuccess: () => setIsEditModalOpen(false) }
     );
   };
@@ -89,13 +89,13 @@ const Telephony = () => {
       sortable: true,
       render: (row) => <div className="text-left text-[#0e1217] text-[13px]">{row.twilioNumber || 'N/A'}</div>
     },
-    {
-      key: "managerNumber",
-      Title: "Manager Number",
-      width: "20%",
-      sortable: true,
-      render: (row) => <div className="text-left text-[#0e1217] text-[13px]">{row.managerNumber || 'N/A'}</div>
-    },
+    // {
+    //   key: "managerNumber",
+    //   Title: "Manager Number",
+    //   width: "20%",
+    //   sortable: true,
+    //   render: (row) => <div className="text-left text-[#0e1217] text-[13px]">{row.managerNumber || 'N/A'}</div>
+    // },
     {
       key: "agentName",
       Title: "Agent Name",
@@ -271,14 +271,14 @@ const Telephony = () => {
                 inputClass="!bg-[#F5F5F5] !border-none !text-[#111] !rounded-xl !py-3.5 !px-4 !font-medium !text-sm"
               />
 
-              <InputField
+              {/* <InputField
                 label="Manager Number"
                 placeholder="+123548968"
                 value={editingNumber?.managerNumber}
                 onChange={(e) => setEditingNumber({...editingNumber, managerNumber: e.target.value})}
                 labelClass="!text-[#0e1217] !text-[13px] !mb-1 !font-medium"
                 inputClass="!bg-[#F5F5F5] !border-none !text-[#111] !rounded-xl !py-3.5 !px-4 !font-medium !text-sm"
-              />
+              /> */}
             </div>
 
             <div className="flex items-center justify-center gap-5 mt-10">
