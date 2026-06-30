@@ -10,7 +10,6 @@ import ApiKeys from "../pages/admin/ApiKeys";
 import TenantManagement from "../pages/admin/TenantManagement";
 import ViewTenant from "../pages/admin/ViewTenant";
 
-
 // owner
 import OwnerDashboard from "../pages/owner/Dashboard";
 import AgentManagement from "../pages/owner/AgentManagement";
@@ -21,9 +20,8 @@ import OwnerSettings from "../pages/owner/Settings";
 import ProfileSettings from "../pages/owner/settings/ProfileSettings";
 import ConnectEmail from "../pages/owner/settings/ConnectEmail";
 import BusinessInfo from "../pages/owner/settings/BusinessInfo";
-import OwnerSubscription from "../pages/owner/settings/Subscription";
+import OwnerSubscription from "../pages/owner/Subscription";
 import PrivacySetting from "../pages/owner/settings/PrivacySetting";
-
 
 // auth
 import LogIn from "../pages/auth/LogIn";
@@ -54,7 +52,7 @@ const router = createBrowserRouter([
   },
 
   // ADMIN DASHBOARD ROUTES
-   {
+  {
     path: "/admin",
     element: <DashboardLayout />,
     children: [
@@ -67,42 +65,39 @@ const router = createBrowserRouter([
       { path: "/admin/telephony-integration", element: <Telephony /> },
     ],
   },
-  
+
   // Business OWNER DASHBOARD ROUTES
   {
     path: "/owner",
     element: <DashboardLayout />,
     children: [
-       // owner
+      // owner
       { path: "/owner/dashboard", element: <OwnerDashboard /> },
       { path: "/owner/agent-management", element: <AgentManagement /> },
       { path: "/owner/call-summary", element: <CallSummary /> },
       { path: "/owner/order-list", element: <OrderList /> },
       { path: "/owner/item-management", element: <ItemManagement /> },
       { path: "/owner/test-voice", element: <TestCallWindow /> },
-      { 
-        path: "/owner/settings", 
+      { path: "/owner/subscription", element: <OwnerSubscription /> },
+      {
+        path: "/owner/settings",
         element: <OwnerSettings />,
         children: [
           { index: true, element: <Navigate to="profile" replace /> },
           { path: "profile", element: <ProfileSettings /> },
           { path: "connect", element: <ConnectEmail /> },
           { path: "business", element: <BusinessInfo /> },
-          { path: "subscription", element: <OwnerSubscription /> },
-          { path: "privacy", element: <PrivacySetting /> }
-        
-        ]
+          { path: "privacy", element: <PrivacySetting /> },
+        ],
       },
     ],
   },
 
-
-   // Redirect root to auth login
+  // Redirect root to auth login
   {
     path: "/",
     element: <Navigate to="/auth/login" replace />,
   },
-
 ]);
 
 export default router;

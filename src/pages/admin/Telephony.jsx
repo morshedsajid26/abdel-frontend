@@ -218,14 +218,14 @@ const Telephony = () => {
                 inputClass="!bg-[#F5F5F5] !border-none !text-[#111] !rounded-xl !py-3.5 !px-4 !font-medium !text-sm"
               />
 
-              <InputField
+              {/* <InputField
                 label="Manager Number"
                 placeholder="+1235489"
                 value={newNumber.managerNumber}
                 onChange={(e) => setNewNumber({...newNumber, managerNumber: e.target.value})}
                 labelClass="!text-[#0e1217] !text-[13px] !mb-1 !font-medium"
                 inputClass="!bg-[#F5F5F5] !border-none !text-[#111] !rounded-xl !py-3.5 !px-4 !font-medium !text-sm"
-              />
+              /> */}
             </div>
 
             <div className="flex items-center justify-center gap-5 mt-10">

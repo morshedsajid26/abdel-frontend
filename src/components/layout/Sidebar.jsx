@@ -26,6 +26,7 @@ export default function Sidebar({ isOpen, onClose }) {
     { name: "Test Call Window", path: "/owner/test-voice", icon: "lucide:phone-call" },
     { name: "Call Summary", path: "/owner/call-summary", icon: "lucide:file-text" },
     { name: "Order list", path: "/owner/order-list", icon: "lucide:list-checks" },
+    { name: "Subscription", path: "/owner/subscription", icon: "lucide:credit-card" },
     // { name: "Item Management", path: "/owner/item-management", icon: "lucide:monitor-cog" },
     // { name: "Settings", path: "/owner/settings", icon: "lucide:settings" },
   ];

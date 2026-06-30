@@ -1,8 +1,8 @@
 import Breadcrumb from "@/components/Breadcrumb";
 import React from "react";
-import BillingHistory from "./BillingHistory";
+import BillingHistory from "./settings/BillingHistory";
 import Plan from "./Plan";
-import CurrentPlan from "./CurrentPlan";
+import CurrentPlan from "./settings/CurrentPlan";
 
 const Subscription = () => {
   return (

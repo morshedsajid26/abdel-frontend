@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Sparkles, Check, X } from 'lucide-react'
-import ToggleButton from '../../../components/ToogleButton'
+import ToggleButton from '../../components/ToogleButton'
 
 const PlanCard = ({ plan, isAnnual }) => (
   <div className={`bg-[#ffffff] border ${plan.isPopular ? 'border-blue-600/30 shadow-[0_0_20px_rgba(37,99,235,0.05)]' : 'border-[#e6e4df]'} p-6 rounded-[28px] flex flex-col gap-6 hover:border-[#e6e4df] transition-all group h-full`}>
@@ -36,7 +36,7 @@ const PlanCard = ({ plan, isAnnual }) => (
     </div>
 
     <div className="mt-auto">
-      <button className="w-full py-2.5 rounded-lg border border-[#419977] bg-linear-to-t from-[#173623] via-[#0a170f] to-[#11291b] text-sm text-white shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:shadow-[0_0_20px_rgba(37,99,235,0.6)] transition-all">
+      <button className="w-full py-2.5 rounded-lg border border-[#419977] bg-linear-to-t from-[#173623] via-[#0a170f] to-[#11291b] text-sm text-white shadow-[0_0_15px_rgba(65,153,119,0.4)] hover:shadow-[0_0_20px_rgba(65,153,119,0.6)] transition-all">
         {plan.buttonText || "Upgrade plan"}
       </button>
     </div>

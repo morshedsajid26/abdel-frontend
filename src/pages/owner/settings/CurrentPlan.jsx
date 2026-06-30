@@ -21,7 +21,7 @@ const CurrentPlan = () => {
 
       {/* Right Button */}
       <div>
-        <button className="px-8 py-2.5 rounded-xl border border-[#419977] bg-linear-to-t from-[#173623] via-[#0a170f] to-[#11291b] text-sm font-medium text-white shadow-[0_0_15px_rgba(37,99,235,0.2)] hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all whitespace-nowrap">
+        <button className="px-8 py-2.5 rounded-xl border border-[#419977] bg-linear-to-t from-[#173623] via-[#0a170f] to-[#11291b] text-sm font-medium text-white shadow-[0_0_15px_rgba(65,153,119,0.2)] hover:shadow-[0_0_20px_rgba(65,153,119,0.4)] transition-all whitespace-nowrap">
           Upgrade Plan
         </button>
       </div>
