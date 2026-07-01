@@ -8,7 +8,6 @@ const Settings = () => {
     { name: "Profile Settings", path: "/owner/settings/profile" },
     { name: "Connect email & number", path: "/owner/settings/connect" },
     { name: "Business Info", path: "/owner/settings/business" },
-    { name: "Subscription", path: "/owner/settings/subscription" },
     { name: "Privacy Setting", path: "/owner/settings/privacy" },
   ];
 
