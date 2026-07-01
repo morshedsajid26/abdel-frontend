@@ -13,6 +13,18 @@ export const useGetSubscriptionPlans = () => {
     });
 };
 
+export const useGetAdminSubscriptionPlans = () => {
+    const axiosSecure = useAxiosSecure();
+
+    return useQuery({
+        queryKey: ['admin-subscription-plans'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/system-owner/subscription-billing/plans');
+            return res.data;
+        }
+    });
+};
+
 export const useCreateCheckoutSession = () => {
     const axiosSecure = useAxiosSecure();
 
